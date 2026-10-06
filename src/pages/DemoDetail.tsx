@@ -229,9 +229,7 @@ export const DemoDetail: React.FC<DemoDetailProps> = ({
               </button>
 
               <div className="flex items-center gap-1.5">
-                <span className={`text-[11px] font-mono font-bold uppercase px-2 py-1 rounded border ${
-                  isEcoIntel ? 'bg-indigo-50 text-indigo-700 border-indigo-200' : 'bg-emerald-50 text-emerald-700 border-emerald-200'
-                }`}>
+                <span className="text-[11px] font-mono font-bold uppercase px-2 py-1 rounded border bg-indigo-50 text-indigo-700 border-indigo-200">
                   {demo.name}
                 </span>
                 {demo.url && (
@@ -354,11 +352,7 @@ export const DemoDetail: React.FC<DemoDetailProps> = ({
                       onBack();
                     }
                   }}
-                  className={`inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-md border transition-all cursor-pointer ${
-                    isEcoIntel
-                      ? 'bg-indigo-50 text-indigo-700 border-indigo-200/80 hover:bg-indigo-100 active:scale-95'
-                      : 'bg-emerald-50 text-emerald-700 border-emerald-200/80 hover:bg-emerald-100 active:scale-95'
-                  }`}
+                  className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-md border bg-indigo-50 text-indigo-700 border-indigo-200/80 hover:bg-indigo-100 active:scale-95 transition-all cursor-pointer"
                   title={`View all ${demo.category} projects in catalogue`}
                 >
                   <span>{demo.category}</span>
@@ -375,11 +369,7 @@ export const DemoDetail: React.FC<DemoDetailProps> = ({
               </h1>
 
               {demo.tagline && (
-                <p className={`text-lg sm:text-2xl font-semibold text-transparent bg-clip-text animate-fade-in ${
-                  isEcoIntel
-                    ? 'bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600'
-                    : 'bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600'
-                }`} style={{ animationDelay: '300ms' }}>
+                <p className="text-lg sm:text-2xl font-semibold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 animate-fade-in" style={{ animationDelay: '300ms' }}>
                   {demo.tagline}
                 </p>
               )}

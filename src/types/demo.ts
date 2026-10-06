@@ -1,6 +1,15 @@
 export type DemoStatus = "live" | "coming-soon";
 
-export type CategoryId = 'all' | 'ai-intelligence' | 'sustainability-environment';
+export type CategoryId =
+  | 'all'
+  | 'ai-intelligence'
+  | 'sustainability-environment'
+  | 'business-technology'
+  | 'healthcare-veterinary'
+  | 'healthcare-clinics'
+  | 'fitness-wellness'
+  | 'beauty-grooming'
+  | 'fashion-boutique';
 
 export interface ProjectCategory {
   id: CategoryId;
@@ -12,7 +21,13 @@ export interface ProjectCategory {
 export type DemoCategory =
   | 'All'
   | 'AI & Intelligence'
-  | 'Sustainability & Environment';
+  | 'Sustainability & Environment'
+  | 'Business & Technology'
+  | 'Healthcare & Veterinary'
+  | 'Healthcare & Clinics'
+  | 'Fitness & Wellness'
+  | 'Beauty & Grooming'
+  | 'Fashion & Boutique';
 
 export interface ArchitectureNode {
   label: string;
@@ -69,6 +84,8 @@ export interface DemoProject {
   documentation: ProjectDocumentation;
   metrics?: { label: string; value: string }[];
   detailedCapabilities?: { title: string; desc: string }[];
+  projectType?: string;
+  industry?: string;
 }
 
 export interface FilterState {

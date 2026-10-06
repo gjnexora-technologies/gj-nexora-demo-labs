@@ -20,8 +20,8 @@ export const Projects: React.FC<ProjectsProps> = ({
   // Read initial category from query parameters if present
   const [selectedCategory, setSelectedCategory] = useState<CategoryId>(() => {
     const params = new URLSearchParams(window.location.search);
-    const cat = params.get('category');
-    if (cat === 'ai-intelligence' || cat === 'sustainability-environment') {
+    const cat = params.get('category') as CategoryId;
+    if (cat && PROJECT_CATEGORIES.some((c) => c.id === cat)) {
       return cat;
     }
     return 'all';
@@ -76,7 +76,7 @@ export const Projects: React.FC<ProjectsProps> = ({
 
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-white text-slate-700 text-xs font-semibold border border-slate-200 shadow-2xs">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>02 Live Production Deployments Active</span>
+              <span>08 Live Production Deployments Active</span>
             </div>
           </div>
         </RevealOnScroll>
@@ -184,12 +184,8 @@ export const Projects: React.FC<ProjectsProps> = ({
                   <div className={`lg:col-span-6 space-y-6 ${idx % 2 === 1 ? 'lg:order-1' : ''}`}>
                     <div className="space-y-2">
                       <div className="flex items-center gap-2">
-                        <span className={`text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md border ${
-                          project.id === 'eco-intel'
-                            ? 'bg-indigo-50 text-indigo-700 border-indigo-200'
-                            : 'bg-teal-50 text-teal-700 border-teal-200'
-                        }`}>
-                          {project.number} {project.category}
+                        <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md border bg-indigo-50 text-indigo-700 border-indigo-200/80">
+                          {project.number} &bull; {project.category}
                         </span>
                       </div>
 
@@ -200,9 +196,7 @@ export const Projects: React.FC<ProjectsProps> = ({
                         {project.name}
                       </h2>
 
-                      <p className={`text-sm sm:text-base font-semibold ${
-                        project.id === 'eco-intel' ? 'text-indigo-900/90' : 'text-teal-900/90'
-                      }`}>
+                      <p className="text-sm sm:text-base font-semibold text-slate-700">
                         {project.tagline}
                       </p>
                     </div>
@@ -233,11 +227,7 @@ export const Projects: React.FC<ProjectsProps> = ({
                     <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
                       <button
                         onClick={() => onViewDetails(project)}
-                        className={`min-h-[48px] inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl text-sm font-bold text-white transition-all shadow-md active:scale-[0.98] group/btn cursor-pointer ${
-                          project.id === 'eco-intel'
-                            ? 'bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 hover:from-indigo-500 hover:via-blue-500 hover:to-purple-500 shadow-indigo-600/20'
-                            : 'bg-gradient-to-r from-teal-600 via-emerald-600 to-indigo-600 hover:from-teal-500 hover:via-emerald-500 hover:to-indigo-500 shadow-teal-600/20'
-                        }`}
+                        className="min-h-[48px] inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 hover:from-indigo-500 hover:via-blue-500 hover:to-purple-500 shadow-indigo-600/20 transition-all shadow-md active:scale-[0.98] group/btn cursor-pointer"
                       >
                         <span>View Project Case Study</span>
                         <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200" />

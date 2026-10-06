@@ -50,6 +50,7 @@ export const Home: React.FC<HomeProps> = ({
 
   const ecoIntelProject = DEMOS_DATA.find((p) => p.id === 'eco-intel') || DEMOS_DATA[0];
   const ecoReportProject = DEMOS_DATA.find((p) => p.id === 'eco-report') || DEMOS_DATA[1];
+  const techSolutionsProject = DEMOS_DATA.find((p) => p.id === 'tech-solutions') || DEMOS_DATA[3];
 
   const steps = [
     {
@@ -165,7 +166,7 @@ export const Home: React.FC<HomeProps> = ({
               >
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="font-semibold text-slate-800">02 Live Platforms</span>
+                  <span className="font-semibold text-slate-800">08 Live Platforms</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-indigo-500" />
@@ -548,6 +549,190 @@ export const Home: React.FC<HomeProps> = ({
               </div>
             </RevealOnScroll>
           )}
+
+          {/* PROJECT 03: Tech Solutions (Featured Corporate Engineering Showcase) */}
+          {(selectedCategory === 'all' || selectedCategory === 'business-technology') && (
+            <RevealOnScroll direction="up" delay={150}>
+              <div className="bg-white rounded-3xl border border-slate-200/90 p-6 sm:p-10 lg:p-12 shadow-sm card-interactive hover:border-indigo-300 hover:shadow-xl transition-all relative overflow-hidden group">
+                
+                {/* Subtle Ambient Accent */}
+                <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50/60 rounded-full blur-[100px] pointer-events-none" />
+
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
+                  
+                  {/* Visual Side (Span 7) */}
+                  <div className="lg:col-span-7">
+                    <div
+                      onClick={() => onNavigate('/projects/tech-solutions')}
+                      className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-md group-hover:shadow-lg transition-all aspect-[16/10] cursor-pointer"
+                    >
+                      <img
+                        src={techSolutionsProject.image || undefined}
+                        alt="Tech Solutions Corporate Engineering Portfolio Interface"
+                        className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-700 ease-out"
+                        loading="lazy"
+                      />
+                      
+                      <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-blue-700 text-xs font-bold shadow-2xs">
+                        <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                        <span>LIVE DEPLOYMENT</span>
+                      </div>
+
+                      <div className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/85 backdrop-blur-md text-white text-xs font-mono font-medium shadow-2xs">
+                        <span>PROJECT 04</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Editorial Content Side (Span 5) */}
+                  <div className="lg:col-span-5 space-y-6">
+                    <div className="space-y-2">
+                      <div className="inline-flex items-center gap-2">
+                        <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-blue-50 text-blue-700 border border-blue-200">
+                          Business & Technology
+                        </span>
+                      </div>
+
+                      <h3
+                        onClick={() => onNavigate('/projects/tech-solutions')}
+                        className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0F172A] tracking-tight group-hover:text-blue-600 transition-colors cursor-pointer"
+                      >
+                        {techSolutionsProject.name}
+                      </h3>
+
+                      <p className="text-sm font-semibold text-slate-700">
+                        {techSolutionsProject.tagline}
+                      </p>
+                    </div>
+
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                      {techSolutionsProject.description}
+                    </p>
+
+                    {/* Capabilities Badges */}
+                    <div className="space-y-2.5">
+                      <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
+                        Core Capabilities
+                      </span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {techSolutionsProject.capabilities.slice(0, 5).map((cap, i) => (
+                          <span
+                            key={i}
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700 tech-chip-interactive"
+                          >
+                            <CheckCircle2 className="w-3 h-3 text-blue-600" />
+                            <span>{cap}</span>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                      <button
+                        onClick={() => onNavigate('/projects/tech-solutions')}
+                        className="min-h-[46px] inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:from-blue-500 hover:via-indigo-500 hover:to-purple-500 transition-all shadow-md shadow-blue-600/20 active:scale-[0.98] group/btn cursor-pointer"
+                      >
+                        <span>Explore Tech Solutions</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform duration-200" />
+                      </button>
+
+                      {techSolutionsProject.url && (
+                        <a
+                          href={techSolutionsProject.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="min-h-[46px] inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 hover:text-[#0F172A] bg-slate-50 hover:bg-slate-100 active:scale-[0.98] border border-slate-200 transition-all shadow-2xs group/ext cursor-pointer"
+                        >
+                          <span>Launch Live</span>
+                          <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover/ext:translate-x-0.5 group-hover/ext:-translate-y-0.5 transition-transform duration-200" />
+                        </a>
+                      )}
+                    </div>
+
+                  </div>
+
+                </div>
+              </div>
+            </RevealOnScroll>
+          )}
+
+          {/* EXPLORE MORE WORK — COMPACT PORTFOLIO HUB */}
+          <RevealOnScroll direction="up" delay={200}>
+            <div className="bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-950 rounded-3xl p-8 sm:p-12 text-white shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/10 rounded-full blur-[80px] pointer-events-none" />
+              
+              <div className="max-w-4xl space-y-6 relative z-10">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/20 text-indigo-200 text-xs font-bold uppercase tracking-wider">
+                  <span>EXPANDED SHOWCASE</span>
+                  <span className="text-white/40">&bull;</span>
+                  <span>08 TOTAL PLATFORMS</span>
+                </div>
+
+                <div className="space-y-3">
+                  <h3 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-white">
+                    Explore Across Real-World Industries
+                  </h3>
+                  <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-normal max-w-2xl">
+                    Beyond AI & Digital Systems, the Demo Lab includes working platforms for Healthcare & Clinics, Veterinary Medicine, Fitness & Wellness, Grooming, and Boutique Retail.
+                  </p>
+                </div>
+
+                {/* Compact Industry Chips */}
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 pt-2">
+                  <button
+                    onClick={() => onNavigate('/projects/riverdale-veterinary-clinic')}
+                    className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-indigo-400/50 hover:bg-white/10 transition-all text-left group/chip cursor-pointer"
+                  >
+                    <div className="text-xs font-mono text-indigo-300">05 Veterinary</div>
+                    <div className="text-sm font-bold text-white group-hover/chip:text-indigo-200 transition-colors truncate">Riverdale Clinic</div>
+                  </button>
+
+                  <button
+                    onClick={() => onNavigate('/projects/meridian-clinic')}
+                    className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-indigo-400/50 hover:bg-white/10 transition-all text-left group/chip cursor-pointer"
+                  >
+                    <div className="text-xs font-mono text-indigo-300">06 Healthcare</div>
+                    <div className="text-sm font-bold text-white group-hover/chip:text-indigo-200 transition-colors truncate">Meridian Clinic</div>
+                  </button>
+
+                  <button
+                    onClick={() => onNavigate('/projects/ironcore-fitness')}
+                    className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-indigo-400/50 hover:bg-white/10 transition-all text-left group/chip cursor-pointer"
+                  >
+                    <div className="text-xs font-mono text-indigo-300">03 Fitness</div>
+                    <div className="text-sm font-bold text-white group-hover/chip:text-indigo-200 transition-colors truncate">IronCore Fitness</div>
+                  </button>
+
+                  <button
+                    onClick={() => onNavigate('/projects/ironhand-barber-studio')}
+                    className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-indigo-400/50 hover:bg-white/10 transition-all text-left group/chip cursor-pointer"
+                  >
+                    <div className="text-xs font-mono text-indigo-300">07 Grooming</div>
+                    <div className="text-sm font-bold text-white group-hover/chip:text-indigo-200 transition-colors truncate">Ironhand Barber</div>
+                  </button>
+
+                  <button
+                    onClick={() => onNavigate('/projects/maison-ivoire')}
+                    className="p-3.5 rounded-xl bg-white/5 border border-white/10 hover:border-indigo-400/50 hover:bg-white/10 transition-all text-left group/chip cursor-pointer col-span-2 sm:col-span-1"
+                  >
+                    <div className="text-xs font-mono text-indigo-300">08 Fashion</div>
+                    <div className="text-sm font-bold text-white group-hover/chip:text-indigo-200 transition-colors truncate">Maison Ivoire</div>
+                  </button>
+                </div>
+
+                <div className="pt-4 flex flex-col sm:flex-row items-center gap-4">
+                  <button
+                    onClick={() => onNavigate('/projects')}
+                    className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl text-sm font-bold text-slate-900 bg-white hover:bg-slate-100 transition-all shadow-lg active:scale-[0.98] group/all cursor-pointer"
+                  >
+                    <span>Explore All 08 Projects in Catalogue</span>
+                    <ArrowRight className="w-4 h-4 text-slate-900 group-hover/all:translate-x-1 transition-transform duration-200" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </RevealOnScroll>
 
         </div>
       </section>

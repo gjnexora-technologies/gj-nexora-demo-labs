@@ -54,7 +54,7 @@ export const Footer: React.FC<FooterProps> = ({
 
               <div className="flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-3.5 py-1.5 rounded-xl border border-emerald-200 shadow-2xs self-start md:self-auto">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>02 Production Deployments Online</span>
+                <span>08 Production Deployments Online</span>
               </div>
             </div>
           </div>
@@ -172,7 +172,7 @@ export const Footer: React.FC<FooterProps> = ({
                 Projects
               </h4>
               <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200">
-                02 LIVE
+                08 LIVE
               </span>
             </div>
 
@@ -213,12 +213,30 @@ export const Footer: React.FC<FooterProps> = ({
                 </button>
               </li>
 
+              <li>
+                <button
+                  onClick={() => onNavigate('/projects/tech-solutions')}
+                  className="group/proj flex flex-col text-left py-1 cursor-pointer w-full"
+                >
+                  <div className="flex items-center gap-1.5 text-[#0F172A] group-hover/proj:text-blue-600 transition-colors">
+                    <span className="text-xs font-mono font-bold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200 group-hover/proj:bg-blue-600 group-hover/proj:text-white transition-colors">
+                      04
+                    </span>
+                    <span className="font-bold">Tech Solutions</span>
+                    <ArrowRight className="w-3.5 h-3.5 opacity-0 group-hover/proj:opacity-100 group-hover/proj:translate-x-0.5 transition-all text-blue-600" />
+                  </div>
+                  <span className="text-[11px] text-slate-500 font-normal pl-6">
+                    Business & Technology
+                  </span>
+                </button>
+              </li>
+
               <li className="pt-1">
                 <button
                   onClick={() => onNavigate('/projects')}
                   className="text-xs font-bold text-indigo-600 hover:text-indigo-800 transition-colors flex items-center gap-1 cursor-pointer"
                 >
-                  <span>View Project Catalogue</span>
+                  <span>View All 08 Projects</span>
                   <ArrowRight className="w-3 h-3" />
                 </button>
               </li>
@@ -318,7 +336,7 @@ export const Footer: React.FC<FooterProps> = ({
           <div className="flex flex-wrap items-center justify-center sm:justify-end gap-4 sm:gap-6">
             <span className="text-xs text-slate-500 flex items-center gap-1.5 font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-              02 Verified Standalone Deployments
+              08 Verified Standalone Deployments
             </span>
 
             <button

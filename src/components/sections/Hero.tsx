@@ -69,7 +69,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreProjects, onHowWeBuild }) =
           <div className="pt-8 flex items-center justify-center gap-6 text-xs text-slate-500 font-medium">
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>02 Live Deployed Systems</span>
+              <span>08 Live Deployed Systems</span>
             </div>
             <span className="text-slate-300">•</span>
             <div>100% Standalone Architectures</div>
