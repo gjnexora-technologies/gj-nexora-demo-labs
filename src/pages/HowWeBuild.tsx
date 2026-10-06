@@ -19,6 +19,8 @@ import {
 } from 'lucide-react';
 
 import { DigitalEngineeringAtmosphere } from '../components/layout/DigitalEngineeringAtmosphere';
+import { RevealOnScroll } from '../components/animation/RevealOnScroll';
+import { StaggerGroup } from '../components/animation/StaggerGroup';
 
 interface HowWeBuildProps {
   onOpenContact: (context?: string) => void;
@@ -156,42 +158,45 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
       {/* Reusable Digital Engineering Atmosphere */}
       <DigitalEngineeringAtmosphere variant="how-we-build" />
 
-
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24 relative z-10">
         
         {/* ========================================================================= */}
         {/* 1. SECTION INTRODUCTION */}
         {/* ========================================================================= */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 pt-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200/80 text-indigo-700 text-xs font-bold uppercase tracking-wider shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
-            <span>HOW WE BUILD</span>
+        <RevealOnScroll direction="up" delay={0}>
+          <div className="text-center max-w-3xl mx-auto space-y-4 pt-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200/80 text-indigo-700 text-xs font-bold uppercase tracking-wider shadow-2xs">
+              <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
+              <span>HOW WE BUILD</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] tracking-tight leading-[1.12]">
+              A Disciplined Approach to{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600">
+                Building Software That Works.
+              </span>
+            </h1>
+
+            <p className="text-base sm:text-lg text-[#475569] leading-relaxed max-w-2xl mx-auto font-normal">
+              From understanding the problem to deploying and refining the solution. Explore how GJ Nexora Technologies turns requirements into reliable digital products.
+            </p>
           </div>
-
-          <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#0F172A] tracking-tight leading-[1.12]">
-            A Disciplined Approach to{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600">
-              Building Software That Works.
-            </span>
-          </h1>
-
-          <p className="text-base sm:text-lg text-[#475569] leading-relaxed max-w-2xl mx-auto font-normal">
-            From understanding the problem to deploying and refining the solution. Explore how GJ Nexora Technologies turns requirements into reliable digital products.
-          </p>
-        </div>
+        </RevealOnScroll>
 
         {/* ========================================================================= */}
         {/* 2. SIX-STEP ENGINEERING PROCESS (DESKTOP: HORIZONTAL TIMELINE, MOBILE: VERTICAL) */}
         {/* ========================================================================= */}
         <div className="space-y-8">
-          <div className="text-center space-y-1.5">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
-              Six-Step Engineering Methodology
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500">
-              Click any stage to inspect specific activities and deliverables.
-            </p>
-          </div>
+          <RevealOnScroll direction="up" delay={50}>
+            <div className="text-center space-y-1.5">
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
+                Six-Step Engineering Methodology
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500">
+                Click any stage to inspect specific activities and deliverables.
+              </p>
+            </div>
+          </RevealOnScroll>
 
           {/* ======================================================================= */}
           {/* DESKTOP TIMELINE TRACK & CONNECTORS */}
@@ -220,7 +225,7 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
                   >
                     {/* Circle Node on Timeline */}
                     <div
-                      className={`w-9 h-9 rounded-full flex items-center justify-center font-mono text-xs font-bold transition-all duration-200 mb-4 shadow-sm ${
+                      className={`w-9 h-9 rounded-full flex items-center justify-center font-mono text-xs font-bold transition-all duration-300 mb-4 shadow-sm ${
                         isActive
                           ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white ring-4 ring-indigo-100 scale-110'
                           : isPassed
@@ -233,9 +238,9 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
 
                     {/* Step Name */}
                     <span
-                      className={`text-xs font-extrabold tracking-wider transition-colors ${
+                      className={`text-xs font-extrabold tracking-wider transition-colors duration-200 ${
                         isActive
-                          ? 'text-indigo-600'
+                          ? 'text-indigo-600 font-black'
                           : 'text-slate-700 group-hover:text-indigo-600'
                       }`}
                     >
@@ -264,7 +269,7 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
                 <div
                   key={step.num}
                   onClick={() => setActiveStep(idx)}
-                  className={`relative bg-white rounded-2xl border transition-all duration-300 p-5 space-y-3 cursor-pointer ${
+                  className={`relative bg-white rounded-2xl border transition-all duration-300 p-5 space-y-3 cursor-pointer card-interactive ${
                     isActive
                       ? 'border-indigo-500 shadow-md ring-2 ring-indigo-500/15 -translate-y-0.5'
                       : 'border-slate-200/90 shadow-2xs hover:border-slate-300 hover:bg-slate-50/50'
@@ -305,7 +310,7 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
                     {step.deliverables.map((item, i) => (
                       <span
                         key={i}
-                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-[11px] font-medium text-slate-700"
+                        className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-slate-50 border border-slate-200 text-[11px] font-medium text-slate-700 tech-chip-interactive"
                       >
                         <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                         <span>{item}</span>
@@ -318,7 +323,7 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
           </div>
 
           {/* Desktop 6-Card Row (Visible on lg+) */}
-          <div className="hidden lg:grid lg:grid-cols-6 gap-3.5">
+          <StaggerGroup staggerDelay={80} baseDelay={0} className="hidden lg:grid lg:grid-cols-6 gap-3.5">
             {steps.map((step, idx) => {
               const Icon = step.icon;
               const isActive = activeStep === idx;
@@ -327,10 +332,10 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
                 <div
                   key={step.num}
                   onClick={() => setActiveStep(idx)}
-                  className={`bg-white rounded-2xl border transition-all duration-300 p-5 flex flex-col justify-between cursor-pointer group ${
+                  className={`bg-white rounded-2xl border transition-all duration-300 p-5 flex flex-col justify-between cursor-pointer group card-interactive ${
                     isActive
                       ? 'border-indigo-500 shadow-lg shadow-indigo-600/10 ring-2 ring-indigo-500/15 -translate-y-1 scale-[1.015]'
-                      : 'border-slate-200 shadow-2xs hover:border-indigo-300 hover:shadow-md hover:-translate-y-1'
+                      : 'border-slate-200 shadow-2xs hover:border-indigo-300 hover:shadow-md'
                   }`}
                 >
                   <div className="space-y-4">
@@ -352,7 +357,7 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
                     </div>
 
                     <div className="space-y-1">
-                      <h3 className="text-sm font-extrabold text-[#0F172A] tracking-tight uppercase">
+                      <h3 className="text-sm font-extrabold text-[#0F172A] tracking-tight uppercase group-hover:text-indigo-600 transition-colors">
                         {step.title}
                       </h3>
                       <div className="text-[11px] font-semibold text-indigo-600">
@@ -376,86 +381,90 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
                 </div>
               );
             })}
-          </div>
+          </StaggerGroup>
 
         </div>
 
         {/* ========================================================================= */}
         {/* 3. ENGINEERING ARCHITECTURE PIPELINE (LIGHT-THEME) */}
         {/* ========================================================================= */}
-        <div className="bg-slate-50/90 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-200/80 pb-5">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-indigo-600">
-                SYSTEM PIPELINE
-              </span>
-              <h3 className="text-xl sm:text-2xl font-extrabold text-[#0F172A] tracking-tight">
-                Continuous Architecture Pipeline
-              </h3>
-            </div>
-            <div className="flex items-center gap-2 text-xs font-mono text-slate-600 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>Decoupled Standalone Runtimes</span>
-            </div>
-          </div>
-
-          {/* Desktop Horizontal / Mobile Vertical Pipeline Flow */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 pt-1">
-            {pipelineStages.map((stage, i) => (
-              <div
-                key={stage.step}
-                className="bg-white rounded-2xl p-4 border border-slate-200 hover:border-indigo-400 hover:shadow-md transition-all group space-y-2 relative"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-xs font-mono font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-100">
-                    {stage.step}
-                  </span>
-                  <span className="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-indigo-600 transition-colors" />
-                </div>
-                <div className="text-sm font-extrabold text-[#0F172A] tracking-tight">
-                  {stage.name}
-                </div>
-                <div className="text-xs text-slate-500 font-normal">
-                  {stage.detail}
-                </div>
-
-                {i < pipelineStages.length - 1 && (
-                  <div className="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 text-slate-300 group-hover:text-indigo-600 transition-colors pointer-events-none">
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </div>
-                )}
+        <RevealOnScroll direction="up" delay={0}>
+          <div className="bg-slate-50/90 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-200/80 pb-5">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-wider text-indigo-600">
+                  SYSTEM PIPELINE
+                </span>
+                <h3 className="text-xl sm:text-2xl font-extrabold text-[#0F172A] tracking-tight">
+                  Continuous Architecture Pipeline
+                </h3>
               </div>
-            ))}
+              <div className="flex items-center gap-2 text-xs font-mono text-slate-600 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>Decoupled Standalone Runtimes</span>
+              </div>
+            </div>
+
+            {/* Desktop Horizontal / Mobile Vertical Pipeline Flow */}
+            <StaggerGroup staggerDelay={70} baseDelay={0} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 pt-1">
+              {pipelineStages.map((stage, i) => (
+                <div
+                  key={stage.step}
+                  className="bg-white rounded-2xl p-4 border border-slate-200 hover:border-indigo-400 hover:shadow-md transition-all group space-y-2 relative card-interactive"
+                >
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-mono font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-100">
+                      {stage.step}
+                    </span>
+                    <span className="w-2 h-2 rounded-full bg-slate-300 group-hover:bg-indigo-600 transition-colors" />
+                  </div>
+                  <div className="text-sm font-extrabold text-[#0F172A] tracking-tight group-hover:text-indigo-600 transition-colors">
+                    {stage.name}
+                  </div>
+                  <div className="text-xs text-slate-500 font-normal">
+                    {stage.detail}
+                  </div>
+
+                  {i < pipelineStages.length - 1 && (
+                    <div className="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 z-10 text-slate-300 group-hover:text-indigo-600 transition-colors pointer-events-none">
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </div>
+                  )}
+                </div>
+              ))}
+            </StaggerGroup>
           </div>
-        </div>
+        </RevealOnScroll>
 
         {/* ========================================================================= */}
         {/* 4. FOUR ENGINEERING PRINCIPLES */}
         {/* ========================================================================= */}
         <div className="space-y-8">
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-600">
-              ENGINEERING PRINCIPLES
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
-              Our Core Standards
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500">
-              The foundational engineering principles that govern every application we architect.
-            </p>
-          </div>
+          <RevealOnScroll direction="up" delay={0}>
+            <div className="text-center space-y-2 max-w-2xl mx-auto">
+              <span className="text-xs font-bold uppercase tracking-wider text-indigo-600">
+                ENGINEERING PRINCIPLES
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
+                Our Core Standards
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500">
+                The foundational engineering principles that govern every application we architect.
+              </p>
+            </div>
+          </RevealOnScroll>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <StaggerGroup staggerDelay={90} baseDelay={0} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {principles.map((prin) => {
               const PrinIcon = prin.icon;
               return (
                 <div
                   key={prin.num}
-                  className="p-6 rounded-2xl bg-white border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all space-y-3.5 flex flex-col justify-between"
+                  className="p-6 rounded-2xl bg-white border border-slate-200 card-interactive hover:border-indigo-300 hover:shadow-lg space-y-3.5 flex flex-col justify-between group"
                 >
                   <div className="space-y-3">
                     <div className="flex items-center justify-between">
-                      <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600">
+                      <div className="w-10 h-10 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 group-hover:scale-110 transition-transform">
                         <PrinIcon className="w-5 h-5" />
                       </div>
                       <span className="text-xs font-mono font-bold text-slate-400">
@@ -463,7 +472,7 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
                       </span>
                     </div>
 
-                    <h3 className="font-extrabold text-sm sm:text-base text-[#0F172A] tracking-tight uppercase">
+                    <h3 className="font-extrabold text-sm sm:text-base text-[#0F172A] tracking-tight uppercase group-hover:text-indigo-600 transition-colors">
                       {prin.title}
                     </h3>
 
@@ -474,45 +483,47 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
                 </div>
               );
             })}
-          </div>
+          </StaggerGroup>
         </div>
 
         {/* ========================================================================= */}
         {/* 5. TECHNOLOGY APPROACH GROUPING (LIGHT-THEME) */}
         {/* ========================================================================= */}
         <div className="space-y-8">
-          <div className="text-center space-y-2 max-w-2xl mx-auto">
-            <span className="text-xs font-bold uppercase tracking-wider text-indigo-600">
-              TECHNOLOGY STACK
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
-              Verified Production Technologies
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-500">
-              The foundational tech stacks powering our live software platforms.
-            </p>
-          </div>
+          <RevealOnScroll direction="up" delay={0}>
+            <div className="text-center space-y-2 max-w-2xl mx-auto">
+              <span className="text-xs font-bold uppercase tracking-wider text-indigo-600">
+                TECHNOLOGY STACK
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
+                Verified Production Technologies
+              </h2>
+              <p className="text-xs sm:text-sm text-slate-500">
+                The foundational tech stacks powering our live software platforms.
+              </p>
+            </div>
+          </RevealOnScroll>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <StaggerGroup staggerDelay={80} baseDelay={0} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {techGroups.map((group) => {
               const TechIcon = group.icon;
               return (
                 <div
                   key={group.title}
-                  className="bg-white rounded-2xl border border-slate-200 p-5 space-y-3 hover:border-indigo-300 hover:shadow-md transition-all"
+                  className="bg-white rounded-2xl border border-slate-200 p-5 space-y-3 card-interactive hover:border-indigo-300 hover:shadow-md group"
                 >
                   <div className="flex items-center gap-2.5 pb-2 border-b border-slate-100">
-                    <div className="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0">
+                    <div className="w-7 h-7 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                       <TechIcon className="w-4 h-4" />
                     </div>
-                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#0F172A]">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-[#0F172A] group-hover:text-indigo-600 transition-colors">
                       {group.title}
                     </h4>
                   </div>
 
                   <ul className="space-y-1.5 text-xs text-slate-700">
                     {group.technologies.map((tech, i) => (
-                      <li key={i} className="flex items-center gap-1.5 font-medium">
+                      <li key={i} className="flex items-center gap-1.5 font-medium tech-chip-interactive py-0.5 px-1 rounded">
                         <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
                         <span>{tech}</span>
                       </li>
@@ -521,37 +532,39 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
                 </div>
               );
             })}
-          </div>
+          </StaggerGroup>
         </div>
 
         {/* ========================================================================= */}
         {/* 6. CONVERSION CTA BANNER */}
         {/* ========================================================================= */}
-        <div className="bg-slate-50 rounded-3xl border border-slate-200 p-8 sm:p-12 text-center space-y-6 shadow-sm">
-          <div className="max-w-2xl mx-auto space-y-3">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
-              Ready to Build with This Disciplined Process?
-            </h3>
-            <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed">
-              Explore our live standalone project case studies or discuss how we can engineer a custom software system for your team.
-            </p>
-          </div>
+        <RevealOnScroll direction="zoom" delay={0}>
+          <div className="bg-slate-50 rounded-3xl border border-slate-200 p-8 sm:p-12 text-center space-y-6 shadow-sm card-interactive">
+            <div className="max-w-2xl mx-auto space-y-3">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
+                Ready to Build with This Disciplined Process?
+              </h3>
+              <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed">
+                Explore our live standalone project case studies or discuss how we can engineer a custom software system for your team.
+              </p>
+            </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
-            <button
-              onClick={() => onNavigate('/projects')}
-              className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 hover:from-indigo-500 hover:via-blue-500 hover:to-purple-500 active:scale-[0.98] transition-all shadow-md shadow-indigo-600/20 cursor-pointer"
-            >
-              <span>Explore Projects →</span>
-            </button>
-            <button
-              onClick={() => onOpenContact('Inquiry from How We Build Page')}
-              className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl text-sm font-semibold text-[#0F172A] bg-white hover:bg-slate-100 active:scale-[0.98] border border-slate-200 transition-all cursor-pointer"
-            >
-              <span>Discuss Your Project</span>
-            </button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5">
+              <button
+                onClick={() => onNavigate('/projects')}
+                className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 hover:from-indigo-500 hover:via-blue-500 hover:to-purple-500 active:scale-[0.98] transition-all shadow-md shadow-indigo-600/20 cursor-pointer"
+              >
+                <span>Explore Projects →</span>
+              </button>
+              <button
+                onClick={() => onOpenContact('Inquiry from How We Build Page')}
+                className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl text-sm font-semibold text-[#0F172A] bg-white hover:bg-slate-100 active:scale-[0.98] border border-slate-200 transition-all cursor-pointer hover:border-slate-300"
+              >
+                <span>Discuss Your Project</span>
+              </button>
+            </div>
           </div>
-        </div>
+        </RevealOnScroll>
 
       </div>
     </div>

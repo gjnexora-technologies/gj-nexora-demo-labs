@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import { DigitalEngineeringAtmosphere } from '../components/layout/DigitalEngineeringAtmosphere';
 import { sendEnquiryEmail } from '../services/emailService';
+import { RevealOnScroll } from '../components/animation/RevealOnScroll';
 
 interface ContactProps {
   onNavigate?: (path: string) => void;
@@ -115,23 +116,25 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
         {/* ========================================================================= */}
         {/* 1. HEADER (QUIET ZONE PROTECTED) */}
         {/* ========================================================================= */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 pt-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50/90 backdrop-blur-xs border border-indigo-200/80 text-indigo-700 text-xs font-bold uppercase tracking-wider shadow-2xs">
-            <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
-            <span>START A PROJECT</span>
+        <RevealOnScroll direction="up">
+          <div className="text-center max-w-3xl mx-auto space-y-4 pt-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50/90 backdrop-blur-xs border border-indigo-200/80 text-indigo-700 text-xs font-bold uppercase tracking-wider shadow-2xs">
+              <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
+              <span>START A PROJECT</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
+              Let's Build Something{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600">
+                Useful.
+              </span>
+            </h1>
+
+            <p className="text-base sm:text-lg text-[#475569] leading-relaxed font-normal">
+              Have an idea? Need a custom system, AI solution, or operational application? Reach out directly or submit your project enquiry below.
+            </p>
           </div>
-
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
-            Let's Build Something{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600">
-              Useful.
-            </span>
-          </h1>
-
-          <p className="text-base sm:text-lg text-[#475569] leading-relaxed font-normal">
-            Have an idea? Need a custom system, AI solution, or operational application? Reach out directly or submit your project enquiry below.
-          </p>
-        </div>
+        </RevealOnScroll>
 
         {/* ========================================================================= */}
         {/* 2. MAIN CONTACT GRID (FORM LEFT, CHANNELS RIGHT) */}
@@ -139,7 +142,7 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           
           {/* Form Column (Span 7) */}
-          <div className="lg:col-span-7 bg-slate-50/90 backdrop-blur-xs rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-md relative overflow-hidden">
+          <div className="lg:col-span-7 bg-slate-50/90 backdrop-blur-xs rounded-3xl border border-slate-200 p-6 sm:p-10 shadow-md relative overflow-hidden card-interactive">
             <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-100/40 rounded-full blur-[80px] pointer-events-none" />
 
             {isSubmitted ? (
@@ -333,10 +336,10 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
           </div>
 
           {/* Direct Details & Digital Channels Column (Span 5) */}
-          <div className="lg:col-span-5 space-y-8">
+          <RevealOnScroll direction="right" delay={150} className="lg:col-span-5 space-y-8">
             
             {/* Direct Official Contact Cards */}
-            <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 space-y-6 shadow-sm">
+            <div className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 space-y-6 shadow-sm card-interactive">
               <h3 className="text-base font-bold text-[#0F172A] uppercase tracking-wider text-xs">
                 Official Direct Channels
               </h3>
@@ -400,7 +403,7 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
             </div>
 
             {/* Official Digital Channels */}
-            <div className="bg-white rounded-3xl border border-slate-200 p-6 space-y-4 shadow-sm">
+            <div className="bg-white rounded-3xl border border-slate-200 p-6 space-y-4 shadow-sm card-interactive">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700 border-b border-slate-100 pb-2">
                 Official Digital Footprint
               </h4>
@@ -451,7 +454,7 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
             </div>
 
             {/* Engagement Timeline Preview */}
-            <div className="bg-slate-50 rounded-2xl border border-slate-200 p-6 space-y-4">
+            <div className="bg-slate-50 rounded-2xl border border-slate-200 p-6 space-y-4 card-interactive">
               <h4 className="text-xs font-bold uppercase tracking-wider text-slate-700">
                 What Happens Next?
               </h4>
@@ -477,7 +480,7 @@ export const Contact: React.FC<ContactProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-          </div>
+          </RevealOnScroll>
 
         </div>
 

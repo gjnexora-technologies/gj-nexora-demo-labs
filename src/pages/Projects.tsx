@@ -3,6 +3,8 @@ import { DemoProject, CategoryId } from '../types/demo';
 import { DEMOS_DATA, PROJECT_CATEGORIES, getCategoryById } from '../data/demos';
 import { ArrowRight, ExternalLink, Layers, CheckCircle2, FolderKanban } from 'lucide-react';
 import { DigitalEngineeringAtmosphere } from '../components/layout/DigitalEngineeringAtmosphere';
+import { RevealOnScroll } from '../components/animation/RevealOnScroll';
+import { StaggerGroup } from '../components/animation/StaggerGroup';
 
 interface ProjectsProps {
   onViewDetails: (demo: DemoProject) => void;
@@ -54,99 +56,103 @@ export const Projects: React.FC<ProjectsProps> = ({
         {/* ========================================================================= */}
         {/* 1. HEADER & INTRO (QUIET ZONE PROTECTED) */}
         {/* ========================================================================= */}
-        <div className="text-center max-w-3xl mx-auto space-y-4 pt-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-xs border border-indigo-200/80 text-indigo-700 text-xs font-bold uppercase tracking-wider shadow-2xs">
-            <Layers className="w-3.5 h-3.5 text-indigo-600" />
-            <span>PROJECT CATALOGUE</span>
+        <RevealOnScroll direction="up" delay={0}>
+          <div className="text-center max-w-3xl mx-auto space-y-4 pt-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-xs border border-indigo-200/80 text-indigo-700 text-xs font-bold uppercase tracking-wider shadow-2xs">
+              <Layers className="w-3.5 h-3.5 text-indigo-600" />
+              <span>PROJECT CATALOGUE</span>
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
+              Explore Our{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600">
+                Working Software
+              </span>
+            </h1>
+
+            <p className="text-base sm:text-lg text-[#475569] leading-relaxed font-normal">
+              Browse real applications engineered, deployed, and documented by GJ Nexora Technologies. Each application represents an independent system with custom architecture, live cloud hosting, and real-world utility.
+            </p>
+
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-white text-slate-700 text-xs font-semibold border border-slate-200 shadow-2xs">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+              <span>02 Live Production Deployments Active</span>
+            </div>
           </div>
-
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
-            Explore Our{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600">
-              Working Software
-            </span>
-          </h1>
-
-          <p className="text-base sm:text-lg text-[#475569] leading-relaxed font-normal">
-            Browse real applications engineered, deployed, and documented by GJ Nexora Technologies. Each application represents an independent system with custom architecture, live cloud hosting, and real-world utility.
-          </p>
-
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg bg-white text-slate-700 text-xs font-semibold border border-slate-200 shadow-2xs">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>02 Live Production Deployments Active</span>
-          </div>
-        </div>
+        </RevealOnScroll>
 
         {/* ========================================================================= */}
         {/* 2. CATEGORY NAVIGATION & FILTER CONTROL BAR */}
         {/* ========================================================================= */}
-        <div className="space-y-4 border-b border-slate-200/80 pb-6">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            
-            {/* Category Filter Buttons */}
-            <div
-              role="group"
-              aria-label="Filter project catalogue by category"
-              className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0"
-            >
-              {PROJECT_CATEGORIES.map((cat) => {
-                const isActive = selectedCategory === cat.id;
-                return (
-                  <button
-                    key={cat.id}
-                    type="button"
-                    aria-pressed={isActive}
-                    onClick={() => handleCategoryChange(cat.id)}
-                    className={`min-h-[44px] px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 cursor-pointer flex-shrink-0 ${
-                      isActive
-                        ? 'bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 text-white shadow-md shadow-indigo-600/20 ring-2 ring-indigo-500/20'
-                        : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/90 shadow-2xs active:scale-[0.98]'
-                    }`}
-                  >
-                    <span>{cat.name}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            {/* Dynamic Count Badge */}
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-bold font-mono text-slate-700 uppercase self-start sm:self-auto px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-2xs">
-              <span className="w-2 h-2 rounded-full bg-emerald-500" />
-              <span>
-                {filteredProjects.length === 1
-                  ? '01 LIVE PROJECT'
-                  : `0${filteredProjects.length} LIVE PROJECTS`}
-              </span>
-            </div>
-
-          </div>
-
-          {/* Contextual Category Sub-Header when Filtered */}
-          {selectedCategory !== 'all' && (
-            <div className="pt-2 flex items-center justify-between text-xs text-slate-500">
-              <span className="font-semibold text-indigo-900">
-                Category: <strong className="text-[#0F172A]">{activeCategoryInfo.name}</strong> ({filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'})
-              </span>
-              <button
-                type="button"
-                onClick={() => handleCategoryChange('all')}
-                className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 underline underline-offset-2 cursor-pointer"
+        <RevealOnScroll direction="up" delay={80}>
+          <div className="space-y-4 border-b border-slate-200/80 pb-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              
+              {/* Category Filter Buttons */}
+              <div
+                role="group"
+                aria-label="Filter project catalogue by category"
+                className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0"
               >
-                Reset to All Projects
-              </button>
+                {PROJECT_CATEGORIES.map((cat) => {
+                  const isActive = selectedCategory === cat.id;
+                  return (
+                    <button
+                      key={cat.id}
+                      type="button"
+                      aria-pressed={isActive}
+                      onClick={() => handleCategoryChange(cat.id)}
+                      className={`min-h-[44px] px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 cursor-pointer flex-shrink-0 ${
+                        isActive
+                          ? 'bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 text-white shadow-md shadow-indigo-600/20 ring-2 ring-indigo-500/20'
+                          : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/90 shadow-2xs active:scale-[0.98]'
+                      }`}
+                    >
+                      <span>{cat.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Dynamic Count Badge */}
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-bold font-mono text-slate-700 uppercase self-start sm:self-auto px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                <span className="w-2 h-2 rounded-full bg-emerald-500" />
+                <span>
+                  {filteredProjects.length === 1
+                    ? '01 LIVE PROJECT'
+                    : `0${filteredProjects.length} LIVE PROJECTS`}
+                </span>
+              </div>
+
             </div>
-          )}
-        </div>
+
+            {/* Contextual Category Sub-Header when Filtered */}
+            {selectedCategory !== 'all' && (
+              <div className="pt-2 flex items-center justify-between text-xs text-slate-500 animate-fade-in">
+                <span className="font-semibold text-indigo-900">
+                  Category: <strong className="text-[#0F172A]">{activeCategoryInfo.name}</strong> ({filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'})
+                </span>
+                <button
+                  type="button"
+                  onClick={() => handleCategoryChange('all')}
+                  className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 underline underline-offset-2 cursor-pointer"
+                >
+                  Reset to All Projects
+                </button>
+              </div>
+            )}
+          </div>
+        </RevealOnScroll>
 
         {/* ========================================================================= */}
         {/* 3. PROJECT CATALOG CARDS */}
         {/* ========================================================================= */}
         {filteredProjects.length > 0 ? (
-          <div className="space-y-10 sm:space-y-14">
+          <StaggerGroup staggerDelay={120} baseDelay={0} className="space-y-10 sm:space-y-14">
             {filteredProjects.map((project, idx) => (
               <div
                 key={project.id}
-                className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 lg:p-12 hover:border-indigo-300 hover:shadow-xl hover:shadow-indigo-900/5 transition-all duration-300 relative overflow-hidden group animate-fade-in"
+                className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 lg:p-12 card-interactive hover:border-indigo-300 hover:shadow-xl hover:shadow-indigo-900/5 relative overflow-hidden group"
               >
                 {/* Subtle Project Ambient Glow */}
                 <div
@@ -165,7 +171,7 @@ export const Projects: React.FC<ProjectsProps> = ({
                       <img
                         src={project.image || undefined}
                         alt={project.name}
-                        className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
+                        className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                         loading="lazy"
                       />
                       
@@ -194,7 +200,7 @@ export const Projects: React.FC<ProjectsProps> = ({
                         </span>
                       </div>
 
-                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0F172A] tracking-tight">
+                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0F172A] tracking-tight group-hover:text-indigo-600 transition-colors">
                         {project.name}
                       </h2>
 
@@ -218,7 +224,7 @@ export const Projects: React.FC<ProjectsProps> = ({
                         {project.capabilities.slice(0, 5).map((cap, i) => (
                           <span
                             key={i}
-                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700 shadow-2xs"
+                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700 shadow-2xs tech-chip-interactive"
                           >
                             <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                             <span>{cap}</span>
@@ -238,7 +244,7 @@ export const Projects: React.FC<ProjectsProps> = ({
                         }`}
                       >
                         <span>View Project Case Study</span>
-                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                        <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200" />
                       </button>
 
                       {project.url && (
@@ -246,10 +252,10 @@ export const Projects: React.FC<ProjectsProps> = ({
                           href={project.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="min-h-[48px] inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-[#0F172A] bg-slate-50 hover:bg-slate-100 active:scale-[0.98] border border-slate-200 transition-all shadow-2xs cursor-pointer"
+                          className="min-h-[48px] inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-[#0F172A] bg-slate-50 hover:bg-slate-100 active:scale-[0.98] border border-slate-200 transition-all shadow-2xs group/ext cursor-pointer"
                         >
                           <span>Launch Live Platform</span>
-                          <ExternalLink className="w-4 h-4 text-slate-500" />
+                          <ExternalLink className="w-4 h-4 text-slate-500 group-hover/ext:translate-x-0.5 group-hover/ext:-translate-y-0.5 transition-transform duration-200" />
                         </a>
                       )}
                     </div>
@@ -258,7 +264,7 @@ export const Projects: React.FC<ProjectsProps> = ({
                 </div>
               </div>
             ))}
-          </div>
+          </StaggerGroup>
         ) : (
           /* Reusable Empty State */
           <div className="bg-white rounded-3xl border border-slate-200 p-12 text-center space-y-4 max-w-xl mx-auto shadow-sm">
@@ -280,31 +286,33 @@ export const Projects: React.FC<ProjectsProps> = ({
         {/* ========================================================================= */}
         {/* 4. BOTTOM GUIDANCE / WORKFLOW BANNER (LIGHT-THEME SIGNATURE) */}
         {/* ========================================================================= */}
-        <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 text-center space-y-6 shadow-sm relative overflow-hidden">
-          <div className="max-w-2xl mx-auto space-y-3 relative z-10">
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
-              Curious How We Engineer These Platforms?
-            </h3>
-            <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed">
-              Explore our disciplined 6-step engineering methodology, decoupled architecture pipeline, and production standards.
-            </p>
-          </div>
+        <RevealOnScroll direction="zoom" delay={0}>
+          <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 text-center space-y-6 shadow-sm relative overflow-hidden card-interactive">
+            <div className="max-w-2xl mx-auto space-y-3 relative z-10">
+              <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
+                Curious How We Engineer These Platforms?
+              </h3>
+              <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed">
+                Explore our disciplined 6-step engineering methodology, decoupled architecture pipeline, and production standards.
+              </p>
+            </div>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 relative z-10">
-            <button
-              onClick={() => onNavigate('/how-we-build')}
-              className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 hover:from-indigo-500 hover:via-blue-500 hover:to-purple-500 active:scale-[0.98] transition-all shadow-md shadow-indigo-600/20 cursor-pointer"
-            >
-              <span>Explore How We Build →</span>
-            </button>
-            <button
-              onClick={() => onOpenContact('Project Inquiry from Projects Page')}
-              className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl text-sm font-semibold text-[#0F172A] bg-white hover:bg-slate-50 active:scale-[0.98] border border-slate-200 transition-all shadow-2xs cursor-pointer"
-            >
-              <span>Discuss a Custom Project</span>
-            </button>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3.5 relative z-10">
+              <button
+                onClick={() => onNavigate('/how-we-build')}
+                className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 hover:from-indigo-500 hover:via-blue-500 hover:to-purple-500 active:scale-[0.98] transition-all shadow-md shadow-indigo-600/20 cursor-pointer"
+              >
+                <span>Explore How We Build →</span>
+              </button>
+              <button
+                onClick={() => onOpenContact('Project Inquiry from Projects Page')}
+                className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-7 py-3 rounded-xl text-sm font-semibold text-[#0F172A] bg-white hover:bg-slate-50 active:scale-[0.98] border border-slate-200 transition-all shadow-2xs cursor-pointer hover:border-slate-300"
+              >
+                <span>Discuss a Custom Project</span>
+              </button>
+            </div>
           </div>
-        </div>
+        </RevealOnScroll>
 
       </div>
     </div>

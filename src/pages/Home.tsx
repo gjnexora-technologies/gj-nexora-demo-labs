@@ -17,6 +17,8 @@ import {
 import { DEMOS_DATA, PROJECT_CATEGORIES } from '../data/demos';
 import { CategoryId } from '../types/demo';
 import { DigitalEngineeringAtmosphere } from '../components/layout/DigitalEngineeringAtmosphere';
+import { RevealOnScroll } from '../components/animation/RevealOnScroll';
+import { StaggerGroup } from '../components/animation/StaggerGroup';
 
 interface HomeProps {
   onNavigate: (path: string) => void;
@@ -99,45 +101,64 @@ export const Home: React.FC<HomeProps> = ({
         {/* Layered Digital Engineering Atmosphere */}
         <DigitalEngineeringAtmosphere variant="hero" />
 
-        {/* Center Protected Quiet Zone */}
+        {/* Center Protected Quiet Zone with Staggered Entrance */}
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6 sm:space-y-8">
           
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-indigo-200/80 text-indigo-700 text-xs font-bold uppercase tracking-wider shadow-2xs">
+          {/* Eyebrow badge */}
+          <div
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-indigo-200/80 text-indigo-700 text-xs font-bold uppercase tracking-wider shadow-2xs animate-fade-in"
+            style={{ animationDelay: '150ms' }}
+          >
             <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
             <span>GJ NEXORA DEMO LAB</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#0F172A] tracking-tight leading-[1.08]">
+          {/* Main Heading Reveal */}
+          <h1
+            className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-[#0F172A] tracking-tight leading-[1.08] animate-hero-reveal"
+            style={{ animationDelay: '300ms' }}
+          >
             Explore Software{' '}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600">
               Built to Work.
             </span>
           </h1>
 
-          <p className="text-base sm:text-xl text-[#475569] max-w-2xl mx-auto font-normal leading-relaxed">
+          {/* Supporting Text */}
+          <p
+            className="text-base sm:text-xl text-[#475569] max-w-2xl mx-auto font-normal leading-relaxed animate-fade-in"
+            style={{ animationDelay: '450ms' }}
+          >
             Real projects. Real deployments. Practical digital engineering. Explore fully functioning standalone platforms engineered by GJ Nexora Technologies.
           </p>
 
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+          {/* Action Buttons */}
+          <div
+            className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5 animate-fade-in"
+            style={{ animationDelay: '600ms' }}
+          >
             <button
               onClick={() => onNavigate('/projects')}
               className="w-full sm:w-auto min-h-[48px] sm:min-h-[52px] inline-flex items-center justify-center gap-2.5 px-8 py-3.5 rounded-xl text-sm sm:text-base font-bold text-white bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 hover:from-indigo-500 hover:via-blue-500 hover:to-purple-500 active:scale-[0.98] transition-all shadow-lg shadow-indigo-600/20 group/btn cursor-pointer"
             >
               <Layers className="w-4 h-4" />
               <span>Explore Projects</span>
-              <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200" />
             </button>
 
             <button
               onClick={() => onNavigate('/how-we-build')}
-              className="w-full sm:w-auto min-h-[48px] sm:min-h-[52px] inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-[#0F172A] bg-white hover:bg-slate-50 active:scale-[0.98] border border-slate-200 transition-all shadow-2xs cursor-pointer"
+              className="w-full sm:w-auto min-h-[48px] sm:min-h-[52px] inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-[#0F172A] bg-white hover:bg-slate-50 active:scale-[0.98] border border-slate-200 transition-all shadow-2xs cursor-pointer hover:border-slate-300"
             >
               <span>How We Build →</span>
             </button>
           </div>
 
           {/* Quick Metrics Strip */}
-          <div className="pt-6 flex items-center justify-center gap-8 sm:gap-12 text-xs sm:text-sm text-slate-500 font-medium">
+          <div
+            className="pt-6 flex items-center justify-center gap-8 sm:gap-12 text-xs sm:text-sm text-slate-500 font-medium animate-fade-in"
+            style={{ animationDelay: '750ms' }}
+          >
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span className="font-bold text-slate-800">02 Live Platforms</span>
@@ -149,7 +170,10 @@ export const Home: React.FC<HomeProps> = ({
           </div>
 
           {/* Subtle Bottom Scroll Cue */}
-          <div className="pt-4 sm:pt-6">
+          <div
+            className="pt-4 sm:pt-6 animate-fade-in"
+            style={{ animationDelay: '900ms' }}
+          >
             <button
               onClick={scrollToProjects}
               className="inline-flex flex-col items-center gap-1 text-[11px] font-semibold text-slate-400 hover:text-indigo-600 transition-colors cursor-pointer group"
@@ -172,88 +196,96 @@ export const Home: React.FC<HomeProps> = ({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12 relative z-10">
           
           {/* Header Row: Left Title + Right Link */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200/60 pb-6">
-            <div className="space-y-1.5">
-              <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-indigo-600">
-                <span>REAL PROJECTS</span>
+          <RevealOnScroll direction="up" delay={0}>
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-slate-200/60 pb-6">
+              <div className="space-y-1.5">
+                <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-indigo-600">
+                  <span>REAL PROJECTS</span>
+                </div>
+                <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight">
+                  Two Live Platforms. Two Independent Deployments.
+                </h2>
               </div>
-              <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight">
-                Two Live Platforms. Two Independent Deployments.
-              </h2>
-            </div>
 
-            <button
-              onClick={() => onNavigate(selectedCategory !== 'all' ? `/projects?category=${selectedCategory}` : '/projects')}
-              className="inline-flex items-center gap-1.5 text-sm font-bold text-indigo-600 hover:text-indigo-700 transition-colors self-start sm:self-auto group cursor-pointer"
-            >
-              <span>View All Projects</span>
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </button>
-          </div>
+              <button
+                onClick={() => onNavigate(selectedCategory !== 'all' ? `/projects?category=${selectedCategory}` : '/projects')}
+                className="inline-flex items-center gap-1.5 text-sm font-bold text-indigo-600 hover:text-indigo-700 transition-colors self-start sm:self-auto group cursor-pointer"
+              >
+                <span>View All Projects</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-200" />
+              </button>
+            </div>
+          </RevealOnScroll>
 
           {/* Category Filter Controls & Dynamic Counter Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-            
-            {/* Scrollable Category Filter Row */}
-            <div
-              role="group"
-              aria-label="Filter projects by category"
-              className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0"
-            >
-              {PROJECT_CATEGORIES.map((cat) => {
-                const isActive = selectedCategory === cat.id;
-                return (
-                  <button
-                    key={cat.id}
-                    type="button"
-                    aria-pressed={isActive}
-                    onClick={() => setSelectedCategory(cat.id)}
-                    className={`min-h-[44px] px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 cursor-pointer flex-shrink-0 ${
-                      isActive
-                        ? 'bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 text-white shadow-md shadow-indigo-600/20 ring-2 ring-indigo-500/20'
-                        : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/90 shadow-2xs active:scale-[0.98]'
-                    }`}
-                  >
-                    <span>{cat.name}</span>
-                  </button>
-                );
-              })}
-            </div>
+          <RevealOnScroll direction="up" delay={80}>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              
+              {/* Scrollable Category Filter Row */}
+              <div
+                role="group"
+                aria-label="Filter projects by category"
+                className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0"
+              >
+                {PROJECT_CATEGORIES.map((cat) => {
+                  const isActive = selectedCategory === cat.id;
+                  return (
+                    <button
+                      key={cat.id}
+                      type="button"
+                      aria-pressed={isActive}
+                      onClick={() => setSelectedCategory(cat.id)}
+                      className={`min-h-[44px] px-4 sm:px-5 py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 cursor-pointer flex-shrink-0 ${
+                        isActive
+                          ? 'bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 text-white shadow-md shadow-indigo-600/20 ring-2 ring-indigo-500/20'
+                          : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/90 shadow-2xs active:scale-[0.98]'
+                      }`}
+                    >
+                      <span>{cat.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
 
-            {/* Dynamic Contextual Live Project Counter */}
-            <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600 self-start sm:self-auto">
-              <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>
-                {filteredProjects.length === 1
-                  ? '01 Live Project'
-                  : `0${filteredProjects.length} Live Projects`}
-              </span>
-            </div>
+              {/* Dynamic Contextual Live Project Counter */}
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-600 self-start sm:self-auto">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                <span>
+                  {filteredProjects.length === 1
+                    ? '01 Live Project'
+                    : `0${filteredProjects.length} Live Projects`}
+                </span>
+              </div>
 
-          </div>
+            </div>
+          </RevealOnScroll>
 
           {/* Filtered Project Cards Grid */}
           {filteredProjects.length > 0 ? (
-            <div className={`grid grid-cols-1 ${filteredProjects.length > 1 ? 'md:grid-cols-2' : 'max-w-2xl mx-auto w-full'} gap-8 lg:gap-10 transition-all duration-300`}>
+            <StaggerGroup
+              staggerDelay={120}
+              baseDelay={0}
+              className={`grid grid-cols-1 ${filteredProjects.length > 1 ? 'md:grid-cols-2' : 'max-w-2xl mx-auto w-full'} gap-8 lg:gap-10`}
+            >
               {filteredProjects.map((project) => (
                 <div
                   key={project.id}
-                  className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 space-y-6 hover:border-indigo-300 hover:shadow-xl hover:shadow-indigo-900/5 transition-all duration-300 group flex flex-col justify-between relative overflow-hidden animate-fade-in"
+                  className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8 space-y-6 card-interactive hover:border-indigo-300 hover:shadow-xl hover:shadow-indigo-900/5 group flex flex-col justify-between relative overflow-hidden"
                 >
                   {/* Subtle ambient light */}
                   <div
-                    className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-[80px] pointer-events-none ${
+                    className={`absolute top-0 right-0 w-64 h-64 rounded-full blur-[80px] pointer-events-none transition-opacity duration-300 group-hover:opacity-100 opacity-60 ${
                       project.id === 'eco-intel' ? 'bg-indigo-50/80' : 'bg-emerald-50/80'
                     }`}
                   />
 
                   <div className="space-y-5 relative z-10">
-                    {/* Image Container */}
+                    {/* Image Container with Smooth Parallax Zoom */}
                     <div className="relative rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 aspect-[16/10] shadow-2xs">
                       <img
                         src={project.image || undefined}
                         alt={project.name}
-                        className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500"
+                        className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                         loading="lazy"
                       />
                       <div className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md text-xs font-bold text-emerald-700 border border-slate-200 shadow-2xs flex items-center gap-1.5">
@@ -289,7 +321,7 @@ export const Home: React.FC<HomeProps> = ({
                         {project.capabilities.slice(0, 5).map((cap, i) => (
                           <span
                             key={i}
-                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700"
+                            className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700 tech-chip-interactive"
                           >
                             <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                             <span>{cap}</span>
@@ -303,14 +335,14 @@ export const Home: React.FC<HomeProps> = ({
                   <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 border-t border-slate-100 relative z-10">
                     <button
                       onClick={() => onNavigate(`/projects/${project.id}`)}
-                      className={`min-h-[44px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white transition-all shadow-sm active:scale-[0.98] cursor-pointer ${
+                      className={`min-h-[44px] inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white transition-all shadow-sm active:scale-[0.98] group/action cursor-pointer ${
                         project.id === 'eco-intel'
                           ? 'bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 hover:from-indigo-500 hover:via-blue-500 hover:to-purple-500 shadow-indigo-600/20'
                           : 'bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 hover:from-emerald-500 hover:via-teal-500 hover:to-indigo-500 shadow-emerald-600/20'
                       }`}
                     >
                       <span>View Case Study</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/action:translate-x-0.5 transition-transform duration-200" />
                     </button>
 
                     {project.url && (
@@ -318,16 +350,16 @@ export const Home: React.FC<HomeProps> = ({
                         href={project.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="min-h-[44px] inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 hover:text-[#0F172A] bg-slate-50 hover:bg-slate-100 active:scale-[0.98] border border-slate-200 transition-all shadow-2xs"
+                        className="min-h-[44px] inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 hover:text-[#0F172A] bg-slate-50 hover:bg-slate-100 active:scale-[0.98] border border-slate-200 transition-all shadow-2xs group/launch"
                       >
                         <span>Launch Live</span>
-                        <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
+                        <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover/launch:translate-x-0.5 group-hover/launch:-translate-y-0.5 transition-transform duration-200" />
                       </a>
                     )}
                   </div>
                 </div>
               ))}
-            </div>
+            </StaggerGroup>
           ) : (
             /* Reusable Empty State */
             <div className="bg-white rounded-3xl border border-slate-200 p-12 text-center space-y-3 max-w-xl mx-auto shadow-sm">
@@ -374,27 +406,29 @@ export const Home: React.FC<HomeProps> = ({
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14 sm:space-y-16 relative z-10">
           
-          <div className="text-center max-w-3xl mx-auto space-y-3">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-bold uppercase tracking-wider">
-              <span>MORE THAN A PROJECT LIST</span>
+          <RevealOnScroll direction="up" delay={0}>
+            <div className="text-center max-w-3xl mx-auto space-y-3">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-bold uppercase tracking-wider">
+                <span>MORE THAN A PROJECT LIST</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight">
+                A Transparent Showroom of Working Engineering
+              </h2>
+              <p className="text-base sm:text-lg text-[#475569] font-normal leading-relaxed max-w-2xl mx-auto">
+                The GJ Nexora Demo Lab demonstrates our commitment to real software, independent cloud deployments, and documented engineering.
+              </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight">
-              A Transparent Showroom of Working Engineering
-            </h2>
-            <p className="text-base sm:text-lg text-[#475569] font-normal leading-relaxed max-w-2xl mx-auto">
-              The GJ Nexora Demo Lab demonstrates our commitment to real software, independent cloud deployments, and documented engineering.
-            </p>
-          </div>
+          </RevealOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+          <StaggerGroup staggerDelay={100} baseDelay={0} className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             
             {/* Card 01 */}
-            <div className="p-8 rounded-3xl bg-[#F8FAFC] border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all space-y-4 flex flex-col justify-between group">
+            <div className="p-8 rounded-3xl bg-[#F8FAFC] border border-slate-200 card-interactive hover:border-indigo-300 hover:shadow-lg space-y-4 flex flex-col justify-between group">
               <div className="space-y-3">
                 <div className="text-xs font-mono font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2.5 py-1 rounded-md inline-block">
                   01
                 </div>
-                <h3 className="font-extrabold text-xl text-[#0F172A] tracking-tight">
+                <h3 className="font-extrabold text-xl text-[#0F172A] tracking-tight group-hover:text-indigo-600 transition-colors">
                   Real Projects
                 </h3>
                 <p className="text-sm text-[#475569] leading-relaxed font-normal">
@@ -404,12 +438,12 @@ export const Home: React.FC<HomeProps> = ({
             </div>
 
             {/* Card 02 */}
-            <div className="p-8 rounded-3xl bg-[#F8FAFC] border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all space-y-4 flex flex-col justify-between group">
+            <div className="p-8 rounded-3xl bg-[#F8FAFC] border border-slate-200 card-interactive hover:border-indigo-300 hover:shadow-lg space-y-4 flex flex-col justify-between group">
               <div className="space-y-3">
                 <div className="text-xs font-mono font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2.5 py-1 rounded-md inline-block">
                   02
                 </div>
-                <h3 className="font-extrabold text-xl text-[#0F172A] tracking-tight">
+                <h3 className="font-extrabold text-xl text-[#0F172A] tracking-tight group-hover:text-indigo-600 transition-colors">
                   Independent Deployments
                 </h3>
                 <p className="text-sm text-[#475569] leading-relaxed font-normal">
@@ -419,12 +453,12 @@ export const Home: React.FC<HomeProps> = ({
             </div>
 
             {/* Card 03 */}
-            <div className="p-8 rounded-3xl bg-[#F8FAFC] border border-slate-200 hover:border-indigo-300 hover:shadow-lg transition-all space-y-4 flex flex-col justify-between group">
+            <div className="p-8 rounded-3xl bg-[#F8FAFC] border border-slate-200 card-interactive hover:border-indigo-300 hover:shadow-lg space-y-4 flex flex-col justify-between group">
               <div className="space-y-3">
                 <div className="text-xs font-mono font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 px-2.5 py-1 rounded-md inline-block">
                   03
                 </div>
-                <h3 className="font-extrabold text-xl text-[#0F172A] tracking-tight">
+                <h3 className="font-extrabold text-xl text-[#0F172A] tracking-tight group-hover:text-indigo-600 transition-colors">
                   Documented Engineering
                 </h3>
                 <p className="text-sm text-[#475569] leading-relaxed font-normal">
@@ -433,7 +467,7 @@ export const Home: React.FC<HomeProps> = ({
               </div>
             </div>
 
-          </div>
+          </StaggerGroup>
         </div>
       </section>
 
@@ -446,20 +480,22 @@ export const Home: React.FC<HomeProps> = ({
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16 relative z-10">
           
-          <div className="text-center max-w-3xl mx-auto space-y-3">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-bold uppercase tracking-wider">
-              <span>HOW WE BUILD</span>
+          <RevealOnScroll direction="up" delay={0}>
+            <div className="text-center max-w-3xl mx-auto space-y-3">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-bold uppercase tracking-wider">
+                <span>HOW WE BUILD</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight">
+                A Disciplined 6-Step Engineering Process
+              </h2>
+              <p className="text-base sm:text-lg text-[#475569] font-normal leading-relaxed">
+                From raw problem discovery to cloud edge deployment.
+              </p>
             </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#0F172A] tracking-tight">
-              A Disciplined 6-Step Engineering Process
-            </h2>
-            <p className="text-base sm:text-lg text-[#475569] font-normal leading-relaxed">
-              From raw problem discovery to cloud edge deployment.
-            </p>
-          </div>
+          </RevealOnScroll>
 
           {/* Desktop 6-Card Row */}
-          <div className="hidden lg:grid lg:grid-cols-6 gap-3.5">
+          <StaggerGroup staggerDelay={80} baseDelay={0} className="hidden lg:grid lg:grid-cols-6 gap-3.5">
             {steps.map((step, idx) => {
               const IconComponent = step.icon;
               const isActive = activeStep === idx;
@@ -467,10 +503,10 @@ export const Home: React.FC<HomeProps> = ({
                 <div
                   key={step.num}
                   onClick={() => setActiveStep(idx)}
-                  className={`bg-white rounded-2xl p-5 border transition-all duration-300 flex flex-col justify-between cursor-pointer group ${
+                  className={`bg-white rounded-2xl p-5 border transition-all duration-300 flex flex-col justify-between cursor-pointer group card-interactive ${
                     isActive
                       ? 'border-indigo-500 shadow-lg shadow-indigo-600/10 ring-2 ring-indigo-500/15 -translate-y-1'
-                      : 'border-slate-200 shadow-2xs hover:border-indigo-300 hover:shadow-md hover:-translate-y-0.5'
+                      : 'border-slate-200 shadow-2xs hover:border-indigo-300 hover:shadow-md'
                   }`}
                 >
                   <div className="space-y-3">
@@ -500,7 +536,7 @@ export const Home: React.FC<HomeProps> = ({
                 </div>
               );
             })}
-          </div>
+          </StaggerGroup>
 
           {/* Mobile Vertical Timeline */}
           <div className="lg:hidden space-y-3">
@@ -528,14 +564,16 @@ export const Home: React.FC<HomeProps> = ({
             })}
           </div>
 
-          <div className="text-center pt-2">
-            <button
-              onClick={() => onNavigate('/how-we-build')}
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 hover:from-indigo-500 hover:via-blue-500 hover:to-purple-500 active:scale-95 transition-all shadow-md shadow-indigo-600/20 cursor-pointer"
-            >
-              <span>Explore Our Process →</span>
-            </button>
-          </div>
+          <RevealOnScroll direction="up" delay={120}>
+            <div className="text-center pt-2">
+              <button
+                onClick={() => onNavigate('/how-we-build')}
+                className="inline-flex items-center gap-2 px-8 py-3.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 hover:from-indigo-500 hover:via-blue-500 hover:to-purple-500 active:scale-95 transition-all shadow-md shadow-indigo-600/20 cursor-pointer"
+              >
+                <span>Explore Our Process →</span>
+              </button>
+            </div>
+          </RevealOnScroll>
         </div>
       </section>
 
@@ -547,26 +585,34 @@ export const Home: React.FC<HomeProps> = ({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[280px] bg-gradient-to-r from-indigo-100/35 via-blue-50/25 to-purple-100/35 rounded-full blur-[100px] pointer-events-none" />
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-bold uppercase tracking-wider">
-            <span>BUILDING DIGITAL EXCELLENCE</span>
-          </div>
+          <RevealOnScroll direction="up" delay={0}>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-bold uppercase tracking-wider">
+              <span>BUILDING DIGITAL EXCELLENCE</span>
+            </div>
+          </RevealOnScroll>
 
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
-            We Build Practical Digital Solutions That Work.
-          </h2>
+          <RevealOnScroll direction="up" delay={100}>
+            <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] tracking-tight leading-tight">
+              We Build Practical Digital Solutions That Work.
+            </h2>
+          </RevealOnScroll>
 
-          <p className="text-base sm:text-xl text-[#475569] leading-relaxed max-w-2xl mx-auto font-normal">
-            GJ Nexora Technologies is dedicated to engineering purposeful software systems, applied AI applications, and digital platforms that deliver measurable value.
-          </p>
+          <RevealOnScroll direction="up" delay={180}>
+            <p className="text-base sm:text-xl text-[#475569] leading-relaxed max-w-2xl mx-auto font-normal">
+              GJ Nexora Technologies is dedicated to engineering purposeful software systems, applied AI applications, and digital platforms that deliver measurable value.
+            </p>
+          </RevealOnScroll>
 
-          <div className="pt-2">
-            <button
-              onClick={() => onNavigate('/about')}
-              className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 hover:bg-indigo-100 active:scale-95 transition-all cursor-pointer"
-            >
-              <span>About GJ Nexora Technologies →</span>
-            </button>
-          </div>
+          <RevealOnScroll direction="up" delay={240}>
+            <div className="pt-2">
+              <button
+                onClick={() => onNavigate('/about')}
+                className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl text-sm font-bold text-indigo-700 bg-indigo-50 border border-indigo-200 hover:bg-indigo-100 active:scale-95 transition-all cursor-pointer"
+              >
+                <span>About GJ Nexora Technologies →</span>
+              </button>
+            </div>
+          </RevealOnScroll>
         </div>
       </section>
 
@@ -578,43 +624,45 @@ export const Home: React.FC<HomeProps> = ({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[450px] bg-gradient-to-r from-indigo-200/45 via-blue-200/35 to-purple-200/45 rounded-full blur-[120px] pointer-events-none" />
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-14 text-center space-y-6 shadow-md relative overflow-hidden">
-            {/* Ambient Interior Glow */}
-            <div className="absolute top-0 right-1/4 w-80 h-80 bg-indigo-100/60 rounded-full blur-[100px] pointer-events-none" />
-            <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-purple-100/50 rounded-full blur-[100px] pointer-events-none" />
+          <RevealOnScroll direction="zoom" delay={0}>
+            <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-14 text-center space-y-6 shadow-md relative overflow-hidden card-interactive">
+              {/* Ambient Interior Glow */}
+              <div className="absolute top-0 right-1/4 w-80 h-80 bg-indigo-100/60 rounded-full blur-[100px] pointer-events-none" />
+              <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-purple-100/50 rounded-full blur-[100px] pointer-events-none" />
 
-            <div className="relative z-10 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-bold uppercase tracking-wider">
-                <span>START A CONVERSATION</span>
-              </div>
+              <div className="relative z-10 space-y-4">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-bold uppercase tracking-wider">
+                  <span>START A CONVERSATION</span>
+                </div>
 
-              <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] tracking-tight">
-                Ready to Build{' '}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600">
-                  Something Useful?
-                </span>
-              </h2>
+                <h2 className="text-3xl sm:text-5xl font-extrabold text-[#0F172A] tracking-tight">
+                  Ready to Build{' '}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600">
+                    Something Useful?
+                  </span>
+                </h2>
 
-              <p className="text-base sm:text-lg text-[#475569] max-w-xl mx-auto font-normal leading-relaxed">
-                Let's turn your idea, operational challenge, or digital vision into a real, high-performance software solution built to work.
-              </p>
+                <p className="text-base sm:text-lg text-[#475569] max-w-xl mx-auto font-normal leading-relaxed">
+                  Let's turn your idea, operational challenge, or digital vision into a real, high-performance software solution built to work.
+                </p>
 
-              <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-                <button
-                  onClick={() => onNavigate('/projects')}
-                  className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl text-sm sm:text-base font-bold text-white bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 hover:from-indigo-500 hover:via-blue-500 hover:to-purple-500 active:scale-[0.98] transition-all shadow-md shadow-indigo-600/20 cursor-pointer"
-                >
-                  <span>Explore Our Projects →</span>
-                </button>
-                <button
-                  onClick={() => onOpenContact('Homepage Final CTA')}
-                  className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-[#0F172A] bg-white hover:bg-slate-50 active:scale-[0.98] border border-slate-200 transition-all shadow-2xs cursor-pointer"
-                >
-                  <span>Talk to GJ Nexora →</span>
-                </button>
+                <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3.5">
+                  <button
+                    onClick={() => onNavigate('/projects')}
+                    className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl text-sm sm:text-base font-bold text-white bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 hover:from-indigo-500 hover:via-blue-500 hover:to-purple-500 active:scale-[0.98] transition-all shadow-md shadow-indigo-600/20 cursor-pointer"
+                  >
+                    <span>Explore Our Projects →</span>
+                  </button>
+                  <button
+                    onClick={() => onOpenContact('Homepage Final CTA')}
+                    className="w-full sm:w-auto min-h-[48px] inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl text-sm sm:text-base font-semibold text-[#0F172A] bg-white hover:bg-slate-50 active:scale-[0.98] border border-slate-200 transition-all shadow-2xs cursor-pointer hover:border-slate-300"
+                  >
+                    <span>Talk to GJ Nexora →</span>
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
+          </RevealOnScroll>
         </div>
       </section>
 

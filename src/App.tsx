@@ -127,7 +127,7 @@ export const App: React.FC = () => {
       />
 
       {/* Main Page View with smooth transition */}
-      <main key={currentPath} className="flex-1 animate-fade-in">
+      <main key={currentPath} className="flex-1 animate-page-transition">
         {renderCurrentPage()}
       </main>
 
