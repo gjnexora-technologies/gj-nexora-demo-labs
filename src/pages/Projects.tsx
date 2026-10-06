@@ -47,18 +47,18 @@ export const Projects: React.FC<ProjectsProps> = ({
   const activeCategoryInfo = getCategoryById(selectedCategory);
 
   return (
-    <div className="relative min-h-screen bg-[#F8FAFC] text-[#0F172A] py-12 sm:py-16 overflow-hidden">
-      {/* Digital Engineering Atmosphere: Projects Catalog Variant */}
+    <div className="relative min-h-screen bg-[#FAFAFA] text-[#0F172A] py-12 sm:py-16 overflow-hidden">
+      {/* Studio Lighting */}
       <DigitalEngineeringAtmosphere variant="projects" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 sm:space-y-16 relative z-10">
         
         {/* ========================================================================= */}
-        {/* 1. HEADER & INTRO (QUIET ZONE PROTECTED) */}
+        {/* 1. HEADER & INTRO */}
         {/* ========================================================================= */}
         <RevealOnScroll direction="up" delay={0}>
           <div className="text-center max-w-3xl mx-auto space-y-4 pt-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-xs border border-indigo-200/80 text-indigo-700 text-xs font-bold uppercase tracking-wider shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 text-indigo-700 text-xs font-bold uppercase tracking-wider shadow-2xs">
               <Layers className="w-3.5 h-3.5 text-indigo-600" />
               <span>PROJECT CATALOGUE</span>
             </div>
@@ -70,7 +70,7 @@ export const Projects: React.FC<ProjectsProps> = ({
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg text-[#475569] leading-relaxed font-normal">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-normal">
               Browse real applications engineered, deployed, and documented by GJ Nexora Technologies. Each application represents an independent system with custom architecture, live cloud hosting, and real-world utility.
             </p>
 
@@ -104,7 +104,7 @@ export const Projects: React.FC<ProjectsProps> = ({
                       onClick={() => handleCategoryChange(cat.id)}
                       className={`min-h-[44px] px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap transition-all duration-200 cursor-pointer flex-shrink-0 ${
                         isActive
-                          ? 'bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 text-white shadow-md shadow-indigo-600/20 ring-2 ring-indigo-500/20'
+                          ? 'bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 text-white shadow-md shadow-indigo-600/20'
                           : 'bg-white hover:bg-slate-50 text-slate-700 border border-slate-200/90 shadow-2xs active:scale-[0.98]'
                       }`}
                     >
@@ -115,12 +115,12 @@ export const Projects: React.FC<ProjectsProps> = ({
               </div>
 
               {/* Dynamic Count Badge */}
-              <div className="flex items-center gap-2 text-xs sm:text-sm font-bold font-mono text-slate-700 uppercase self-start sm:self-auto px-3 py-1.5 rounded-xl bg-white border border-slate-200 shadow-2xs">
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-slate-700 self-start sm:self-auto px-3.5 py-1.5 rounded-xl bg-white border border-slate-200 shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-emerald-500" />
                 <span>
                   {filteredProjects.length === 1
-                    ? '01 LIVE PROJECT'
-                    : `0${filteredProjects.length} LIVE PROJECTS`}
+                    ? '01 Active Platform'
+                    : `0${filteredProjects.length} Active Platforms`}
                 </span>
               </div>
 
@@ -129,7 +129,7 @@ export const Projects: React.FC<ProjectsProps> = ({
             {/* Contextual Category Sub-Header when Filtered */}
             {selectedCategory !== 'all' && (
               <div className="pt-2 flex items-center justify-between text-xs text-slate-500 animate-fade-in">
-                <span className="font-semibold text-indigo-900">
+                <span className="font-semibold text-slate-700">
                   Category: <strong className="text-[#0F172A]">{activeCategoryInfo.name}</strong> ({filteredProjects.length} {filteredProjects.length === 1 ? 'project' : 'projects'})
                 </span>
                 <button
@@ -145,43 +145,36 @@ export const Projects: React.FC<ProjectsProps> = ({
         </RevealOnScroll>
 
         {/* ========================================================================= */}
-        {/* 3. PROJECT CATALOG CARDS */}
+        {/* 3. PROJECT CATALOG CARDS — BESPOKE PRODUCT PANELS */}
         {/* ========================================================================= */}
         {filteredProjects.length > 0 ? (
           <StaggerGroup staggerDelay={120} baseDelay={0} className="space-y-10 sm:space-y-14">
             {filteredProjects.map((project, idx) => (
               <div
                 key={project.id}
-                className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-10 lg:p-12 card-interactive hover:border-indigo-300 hover:shadow-xl hover:shadow-indigo-900/5 relative overflow-hidden group"
+                className="bg-white rounded-3xl border border-slate-200/90 p-6 sm:p-10 lg:p-12 card-interactive hover:border-slate-300 hover:shadow-xl relative overflow-hidden group"
               >
-                {/* Subtle Project Ambient Glow */}
-                <div
-                  className={`absolute top-0 right-0 w-80 h-80 rounded-full blur-[100px] pointer-events-none transition-opacity duration-300 ${
-                    project.id === 'eco-intel'
-                      ? 'bg-indigo-100/60 group-hover:bg-indigo-200/50'
-                      : 'bg-emerald-100/60 group-hover:bg-emerald-200/50'
-                  }`}
-                />
-
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-10 lg:gap-12 items-center relative z-10">
                   
                   {/* Visual Thumbnail Side (Span 6) */}
                   <div className={`lg:col-span-6 ${idx % 2 === 1 ? 'lg:order-2' : ''}`}>
-                    <div className="relative rounded-2xl overflow-hidden bg-slate-100 border border-slate-200 shadow-md group-hover:shadow-lg transition-shadow aspect-[16/10]">
+                    <div
+                      onClick={() => onViewDetails(project)}
+                      className="relative rounded-2xl overflow-hidden bg-slate-900 border border-slate-200 shadow-md group-hover:shadow-lg transition-all aspect-[16/10] cursor-pointer"
+                    >
                       <img
                         src={project.image || undefined}
                         alt={project.name}
-                        className="w-full h-full object-cover object-top group-hover:scale-[1.03] transition-transform duration-700 ease-out"
+                        className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-700 ease-out"
                         loading="lazy"
                       />
                       
-                      {/* Live Badge Overlay */}
-                      <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-emerald-700 text-xs font-bold shadow-xs">
+                      <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200 text-emerald-700 text-xs font-bold shadow-2xs">
                         <span className="w-2 h-2 rounded-full bg-emerald-500" />
                         <span>LIVE DEPLOYMENT</span>
                       </div>
 
-                      <div className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/85 backdrop-blur-md text-white text-xs font-mono font-medium shadow-xs">
+                      <div className="absolute bottom-4 right-4 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-900/85 backdrop-blur-md text-white text-xs font-mono font-medium shadow-2xs">
                         <span>PROJECT {project.number}</span>
                       </div>
                     </div>
@@ -194,37 +187,40 @@ export const Projects: React.FC<ProjectsProps> = ({
                         <span className={`text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md border ${
                           project.id === 'eco-intel'
                             ? 'bg-indigo-50 text-indigo-700 border-indigo-200'
-                            : 'bg-emerald-50 text-emerald-700 border-emerald-200'
+                            : 'bg-teal-50 text-teal-700 border-teal-200'
                         }`}>
                           {project.number} {project.category}
                         </span>
                       </div>
 
-                      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0F172A] tracking-tight group-hover:text-indigo-600 transition-colors">
+                      <h2
+                        onClick={() => onViewDetails(project)}
+                        className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#0F172A] tracking-tight group-hover:text-indigo-600 transition-colors cursor-pointer"
+                      >
                         {project.name}
                       </h2>
 
                       <p className={`text-sm sm:text-base font-semibold ${
-                        project.id === 'eco-intel' ? 'text-indigo-900/90' : 'text-emerald-900/90'
+                        project.id === 'eco-intel' ? 'text-indigo-900/90' : 'text-teal-900/90'
                       }`}>
                         {project.tagline}
                       </p>
                     </div>
 
-                    <p className="text-sm sm:text-base text-[#475569] leading-relaxed font-normal">
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
                       {project.description}
                     </p>
 
                     {/* Key Capabilities Badges */}
                     <div className="space-y-2.5">
-                      <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                      <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                         Core Platform Capabilities
                       </span>
                       <div className="flex flex-wrap gap-2">
                         {project.capabilities.slice(0, 5).map((cap, i) => (
                           <span
                             key={i}
-                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700 shadow-2xs tech-chip-interactive"
+                            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-slate-50 border border-slate-200 text-xs font-medium text-slate-700 tech-chip-interactive"
                           >
                             <CheckCircle2 className="w-3 h-3 text-emerald-600" />
                             <span>{cap}</span>
@@ -240,7 +236,7 @@ export const Projects: React.FC<ProjectsProps> = ({
                         className={`min-h-[48px] inline-flex items-center justify-center gap-2.5 px-6 py-3 rounded-xl text-sm font-bold text-white transition-all shadow-md active:scale-[0.98] group/btn cursor-pointer ${
                           project.id === 'eco-intel'
                             ? 'bg-gradient-to-r from-indigo-600 via-blue-600 to-purple-600 hover:from-indigo-500 hover:via-blue-500 hover:to-purple-500 shadow-indigo-600/20'
-                            : 'bg-gradient-to-r from-emerald-600 via-teal-600 to-indigo-600 hover:from-emerald-500 hover:via-teal-500 hover:to-indigo-500 shadow-emerald-600/20'
+                            : 'bg-gradient-to-r from-teal-600 via-emerald-600 to-indigo-600 hover:from-teal-500 hover:via-emerald-500 hover:to-indigo-500 shadow-teal-600/20'
                         }`}
                       >
                         <span>View Project Case Study</span>
@@ -255,7 +251,7 @@ export const Projects: React.FC<ProjectsProps> = ({
                           className="min-h-[48px] inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-sm font-semibold text-[#0F172A] bg-slate-50 hover:bg-slate-100 active:scale-[0.98] border border-slate-200 transition-all shadow-2xs group/ext cursor-pointer"
                         >
                           <span>Launch Live Platform</span>
-                          <ExternalLink className="w-4 h-4 text-slate-500 group-hover/ext:translate-x-0.5 group-hover/ext:-translate-y-0.5 transition-transform duration-200" />
+                          <ExternalLink className="w-4 h-4 text-slate-400 group-hover/ext:translate-x-0.5 group-hover/ext:-translate-y-0.5 transition-transform duration-200" />
                         </a>
                       )}
                     </div>
@@ -270,13 +266,13 @@ export const Projects: React.FC<ProjectsProps> = ({
           <div className="bg-white rounded-3xl border border-slate-200 p-12 text-center space-y-4 max-w-xl mx-auto shadow-sm">
             <FolderKanban className="w-12 h-12 text-slate-400 mx-auto" />
             <h3 className="text-xl font-bold text-[#0F172A]">No Projects Yet</h3>
-            <p className="text-sm text-[#475569] leading-relaxed">
+            <p className="text-sm text-slate-600 leading-relaxed">
               Projects in this category will appear here as they are completed and deployed.
             </p>
             <button
               type="button"
               onClick={() => handleCategoryChange('all')}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 shadow-xs cursor-pointer"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:via-purple-500 shadow-xs cursor-pointer"
             >
               <span>View All Projects</span>
             </button>
@@ -284,15 +280,15 @@ export const Projects: React.FC<ProjectsProps> = ({
         )}
 
         {/* ========================================================================= */}
-        {/* 4. BOTTOM GUIDANCE / WORKFLOW BANNER (LIGHT-THEME SIGNATURE) */}
+        {/* 4. BOTTOM GUIDANCE / WORKFLOW BANNER */}
         {/* ========================================================================= */}
         <RevealOnScroll direction="zoom" delay={0}>
-          <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 text-center space-y-6 shadow-sm relative overflow-hidden card-interactive">
+          <div className="bg-white rounded-3xl border border-slate-200/90 p-8 sm:p-12 text-center space-y-6 shadow-sm relative overflow-hidden card-interactive">
             <div className="max-w-2xl mx-auto space-y-3 relative z-10">
               <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
                 Curious How We Engineer These Platforms?
               </h3>
-              <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
                 Explore our disciplined 6-step engineering methodology, decoupled architecture pipeline, and production standards.
               </p>
             </div>

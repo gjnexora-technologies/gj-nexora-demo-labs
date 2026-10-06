@@ -41,60 +41,60 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
   const steps = [
     {
       num: '01',
-      title: 'UNDERSTAND',
-      subtitle: 'Understand the Requirement',
+      title: 'DISCOVER',
+      subtitle: 'Understand the Problem & Needs',
       desc: 'Understand the requirement before building the system. We analyze real operational workflows, operator needs, data constraints, and business goals.',
       icon: Search,
       deliverables: ['Problem Definition', 'Workflow Analysis', 'Scope Matrix', 'Data Requirements'],
     },
     {
       num: '02',
-      title: 'ARCHITECT',
-      subtitle: 'Plan the System',
+      title: 'DEFINE',
+      subtitle: 'Architect the System & Schemas',
       desc: 'Plan the system with architectural clarity. We blueprint decoupled frontend-backend components, database schemas, and structured API contracts.',
       icon: Workflow,
       deliverables: ['System Architecture', 'Database Schemas', 'API Contracts', 'Tech Stack Selection'],
     },
     {
       num: '03',
-      title: 'BUILD',
-      subtitle: 'Develop the Solution',
-      desc: 'Develop the solution with clean, modular TypeScript and modern frameworks, ensuring strict typing, responsive layouts, and performant logic.',
+      title: 'DESIGN',
+      subtitle: 'Craft User Interfaces & Flows',
+      desc: 'Craft intuitive, accessible interfaces and structured workflows that reduce cognitive load and enhance operator ergonomics.',
       icon: Code2,
-      deliverables: ['Production Frontend', 'Backend Services', 'State Architecture', 'Component UI'],
+      deliverables: ['Interface Design', 'Responsive Breakpoints', 'Design Tokens', 'Interaction Flows'],
     },
     {
       num: '04',
-      title: 'TEST',
-      subtitle: 'Validate the Implementation',
+      title: 'BUILD',
+      subtitle: 'Develop Modular TypeScript Code',
+      desc: 'Develop the solution with clean, modular TypeScript and modern frameworks, ensuring strict typing, responsive layouts, and performant logic.',
+      icon: Layers,
+      deliverables: ['Production Frontend', 'Backend Services', 'State Architecture', 'Component UI'],
+    },
+    {
+      num: '05',
+      title: 'VALIDATE',
+      subtitle: 'Audit & Stress-Test Systems',
       desc: 'Validate the implementation across edge cases, stress testing performance across screen sizes (320px to 4K), networks, and boundary conditions.',
       icon: ShieldCheck,
       deliverables: ['Cross-Device QA', 'Payload Validation', 'Error Boundaries', 'Performance Auditing'],
     },
     {
-      num: '05',
-      title: 'DEPLOY',
-      subtitle: 'Publish the Application',
-      desc: 'Publish the application to high-availability cloud CDN edge networks with automated CI/CD, SSL encryption, and isolated runtime environments.',
+      num: '06',
+      title: 'LAUNCH',
+      subtitle: 'Deploy to Cloud Edge & Refine',
+      desc: 'Publish the application to high-availability cloud CDN edge networks with automated CI/CD, SSL encryption, and continuous monitoring.',
       icon: Rocket,
       deliverables: ['Live HTTPS URL', 'Edge CDN Hosting', 'Environment Setup', 'Uptime Telemetry'],
-    },
-    {
-      num: '06',
-      title: 'REFINE',
-      subtitle: 'Improve the Experience',
-      desc: 'Improve the experience through continuous telemetry, user feedback integration, algorithm enhancements, and proactive performance tuning.',
-      icon: RefreshCw,
-      deliverables: ['Performance Optimization', 'UX Refinements', 'Feature Enhancements', 'Ongoing Health Checks'],
     },
   ];
 
   const pipelineStages = [
-    { step: '01', name: 'IDEA', detail: 'Concept & Needs' },
-    { step: '02', name: 'DESIGN', detail: 'UI/UX & Schema' },
+    { step: '01', name: 'DISCOVERY', detail: 'Concept & Needs' },
+    { step: '02', name: 'ARCHITECTURE', detail: 'UI/UX & Schema' },
     { step: '03', name: 'DEVELOPMENT', detail: 'Core Logic & UI' },
     { step: '04', name: 'INTEGRATION', detail: 'APIs & Pipelines' },
-    { step: '05', name: 'TESTING', detail: 'QA & Auditing' },
+    { step: '05', name: 'VALIDATION', detail: 'QA & Auditing' },
     { step: '06', name: 'DEPLOYMENT', detail: 'Edge CDN Launch' },
   ];
 
@@ -154,8 +154,8 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
   ];
 
   return (
-    <div className="min-h-screen bg-white text-[#0F172A] py-12 sm:py-16 relative overflow-hidden">
-      {/* Reusable Digital Engineering Atmosphere */}
+    <div className="min-h-screen bg-[#FAFAFA] text-[#0F172A] py-12 sm:py-16 relative overflow-hidden">
+      {/* Studio Lighting Atmosphere */}
       <DigitalEngineeringAtmosphere variant="how-we-build" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 sm:space-y-24 relative z-10">
@@ -165,7 +165,7 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
         {/* ========================================================================= */}
         <RevealOnScroll direction="up" delay={0}>
           <div className="text-center max-w-3xl mx-auto space-y-4 pt-4">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-50 border border-indigo-200/80 text-indigo-700 text-xs font-bold uppercase tracking-wider shadow-2xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 text-indigo-700 text-xs font-bold uppercase tracking-wider shadow-2xs">
               <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
               <span>HOW WE BUILD</span>
             </div>
@@ -177,14 +177,14 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
               </span>
             </h1>
 
-            <p className="text-base sm:text-lg text-[#475569] leading-relaxed max-w-2xl mx-auto font-normal">
+            <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto font-normal">
               From understanding the problem to deploying and refining the solution. Explore how GJ Nexora Technologies turns requirements into reliable digital products.
             </p>
           </div>
         </RevealOnScroll>
 
         {/* ========================================================================= */}
-        {/* 2. SIX-STEP ENGINEERING PROCESS (DESKTOP: HORIZONTAL TIMELINE, MOBILE: VERTICAL) */}
+        {/* 2. SIX-STEP ENGINEERING PROCESS (EDITORIAL TIMELINE) */}
         {/* ========================================================================= */}
         <div className="space-y-8">
           <RevealOnScroll direction="up" delay={50}>
@@ -198,9 +198,7 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
             </div>
           </RevealOnScroll>
 
-          {/* ======================================================================= */}
           {/* DESKTOP TIMELINE TRACK & CONNECTORS */}
-          {/* ======================================================================= */}
           <div className="hidden lg:block relative pt-4 pb-2">
             {/* Horizontal Track Line */}
             <div className="absolute top-[38px] left-[8%] right-[8%] h-0.5 bg-slate-200 z-0" />
@@ -252,13 +250,10 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
             </div>
           </div>
 
-          {/* ======================================================================= */}
-          {/* 6 PROCESS CARDS GRID (DESKTOP 6-COL / TABLET 3-COL / MOBILE VERTICAL TIMELINE) */}
-          {/* ======================================================================= */}
+          {/* 6 PROCESS CARDS GRID */}
           
-          {/* Mobile Vertical Timeline (Visible on screens < lg) */}
+          {/* Mobile Vertical Timeline */}
           <div className="lg:hidden relative pl-8 sm:pl-10 space-y-6">
-            {/* Vertical Connector Line on Mobile */}
             <div className="absolute left-3.5 sm:left-4 top-4 bottom-4 w-0.5 bg-gradient-to-b from-indigo-600 via-blue-600 to-purple-600" />
 
             {steps.map((step, idx) => {
@@ -275,7 +270,6 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
                       : 'border-slate-200/90 shadow-2xs hover:border-slate-300 hover:bg-slate-50/50'
                   }`}
                 >
-                  {/* Timeline Pin Node */}
                   <div
                     className={`absolute -left-[30px] sm:-left-[34px] top-5 w-6 h-6 rounded-full flex items-center justify-center font-mono text-[10px] font-bold shadow-xs transition-all ${
                       isActive
@@ -302,7 +296,7 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
                     </div>
                   </div>
 
-                  <p className="text-xs sm:text-sm text-[#475569] leading-relaxed font-normal">
+                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                     {step.desc}
                   </p>
 
@@ -322,7 +316,7 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
             })}
           </div>
 
-          {/* Desktop 6-Card Row (Visible on lg+) */}
+          {/* Desktop 6-Card Row */}
           <StaggerGroup staggerDelay={80} baseDelay={0} className="hidden lg:grid lg:grid-cols-6 gap-3.5">
             {steps.map((step, idx) => {
               const Icon = step.icon;
@@ -334,7 +328,7 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
                   onClick={() => setActiveStep(idx)}
                   className={`bg-white rounded-2xl border transition-all duration-300 p-5 flex flex-col justify-between cursor-pointer group card-interactive ${
                     isActive
-                      ? 'border-indigo-500 shadow-lg shadow-indigo-600/10 ring-2 ring-indigo-500/15 -translate-y-1 scale-[1.015]'
+                      ? 'border-indigo-500 shadow-md ring-2 ring-indigo-500/15 -translate-y-1 scale-[1.015]'
                       : 'border-slate-200 shadow-2xs hover:border-indigo-300 hover:shadow-md'
                   }`}
                 >
@@ -365,7 +359,7 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
                       </div>
                     </div>
 
-                    <p className="text-xs text-[#475569] leading-relaxed font-normal line-clamp-4">
+                    <p className="text-xs text-slate-600 leading-relaxed font-normal line-clamp-4">
                       {step.desc}
                     </p>
                   </div>
@@ -386,10 +380,10 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
         </div>
 
         {/* ========================================================================= */}
-        {/* 3. ENGINEERING ARCHITECTURE PIPELINE (LIGHT-THEME) */}
+        {/* 3. ENGINEERING ARCHITECTURE PIPELINE */}
         {/* ========================================================================= */}
         <RevealOnScroll direction="up" delay={0}>
-          <div className="bg-slate-50/90 rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm space-y-6">
+          <div className="bg-white rounded-3xl p-6 sm:p-10 border border-slate-200/90 shadow-sm space-y-6">
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 border-b border-slate-200/80 pb-5">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-indigo-600">
@@ -399,18 +393,17 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
                   Continuous Architecture Pipeline
                 </h3>
               </div>
-              <div className="flex items-center gap-2 text-xs font-mono text-slate-600 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs">
+              <div className="flex items-center gap-2 text-xs font-medium text-slate-600 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 shadow-2xs">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>Decoupled Standalone Runtimes</span>
               </div>
             </div>
 
-            {/* Desktop Horizontal / Mobile Vertical Pipeline Flow */}
             <StaggerGroup staggerDelay={70} baseDelay={0} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-3 pt-1">
               {pipelineStages.map((stage, i) => (
                 <div
                   key={stage.step}
-                  className="bg-white rounded-2xl p-4 border border-slate-200 hover:border-indigo-400 hover:shadow-md transition-all group space-y-2 relative card-interactive"
+                  className="bg-[#FAFAFA] rounded-2xl p-4 border border-slate-200 hover:border-indigo-400 hover:shadow-md transition-all group space-y-2 relative card-interactive"
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-xs font-mono font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded border border-indigo-100">
@@ -476,7 +469,7 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
                       {prin.title}
                     </h3>
 
-                    <p className="text-xs sm:text-sm text-[#475569] leading-relaxed font-normal">
+                    <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
                       {prin.desc}
                     </p>
                   </div>
@@ -487,7 +480,7 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
         </div>
 
         {/* ========================================================================= */}
-        {/* 5. TECHNOLOGY APPROACH GROUPING (LIGHT-THEME) */}
+        {/* 5. TECHNOLOGY STACK GROUPING */}
         {/* ========================================================================= */}
         <div className="space-y-8">
           <RevealOnScroll direction="up" delay={0}>
@@ -539,12 +532,12 @@ export const HowWeBuild: React.FC<HowWeBuildProps> = ({
         {/* 6. CONVERSION CTA BANNER */}
         {/* ========================================================================= */}
         <RevealOnScroll direction="zoom" delay={0}>
-          <div className="bg-slate-50 rounded-3xl border border-slate-200 p-8 sm:p-12 text-center space-y-6 shadow-sm card-interactive">
+          <div className="bg-white rounded-3xl border border-slate-200 p-8 sm:p-12 text-center space-y-6 shadow-sm card-interactive">
             <div className="max-w-2xl mx-auto space-y-3">
               <h3 className="text-2xl sm:text-3xl font-extrabold text-[#0F172A] tracking-tight">
                 Ready to Build with This Disciplined Process?
               </h3>
-              <p className="text-sm sm:text-base text-[#475569] font-normal leading-relaxed">
+              <p className="text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
                 Explore our live standalone project case studies or discuss how we can engineer a custom software system for your team.
               </p>
             </div>

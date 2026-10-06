@@ -11,47 +11,18 @@
 
   body {
     font-family: var(--font-sans);
-    background-color: #FFFFFF;
+    background-color: #FAFAFA;
     color: #0F172A;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
-/* Technical Engineering Grid Utilities */
-.engineering-grid {
-  background-size: 28px 28px;
-  background-image: 
-    linear-gradient(to right, rgba(99, 102, 241, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(99, 102, 241, 0.07) 1px, transparent 1px);
-}
-
-.engineering-grid-subtle {
-  background-size: 28px 28px;
-  background-image: 
-    linear-gradient(to right, rgba(148, 163, 184, 0.06) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(148, 163, 184, 0.06) 1px, transparent 1px);
-}
-
-.engineering-dots {
-  background-image: radial-gradient(rgba(99, 102, 241, 0.15) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
 /* ========================================================================= */
-/* ANIMATIONS & KEYFRAMES                                                    */
+/* STUDIO ANIMATIONS & REVEAL KEYFRAMES                                      */
 /* ========================================================================= */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 8px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes pageTransition {
   from {
     opacity: 0;
     transform: translate3d(0, 10px, 0);
@@ -62,102 +33,31 @@
   }
 }
 
-@keyframes heroReveal {
+@keyframes pageTransition {
   from {
     opacity: 0;
-    transform: translate3d(0, 18px, 0);
-    filter: blur(4px);
+    transform: translate3d(0, 12px, 0);
   }
   to {
     opacity: 1;
     transform: translate3d(0, 0, 0);
-    filter: blur(0px);
   }
 }
 
-@keyframes pulseSubtle {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.45;
-    transform: scale(0.92);
-  }
-}
-
-@keyframes pulseGlow {
-  0%, 100% {
-    opacity: 0.8;
-    filter: drop-shadow(0 0 3px rgba(79, 70, 229, 0.4));
-  }
-  50% {
-    opacity: 0.4;
-    filter: drop-shadow(0 0 1px rgba(79, 70, 229, 0.1));
-  }
-}
-
-@keyframes dataFlow {
+@keyframes heroReveal {
   from {
-    stroke-dashoffset: 32;
+    opacity: 0;
+    transform: translate3d(0, 16px, 0);
   }
   to {
-    stroke-dashoffset: 0;
-  }
-}
-
-/* Floating Icon Animation Keyframes */
-@keyframes floatSlow1 {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-16px) rotate(6deg);
-  }
-}
-
-@keyframes floatSlow2 {
-  0%, 100% {
-    transform: translateY(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-22px) rotate(-8deg);
-  }
-}
-
-@keyframes floatSlow3 {
-  0%, 100% {
-    transform: translateY(0px) translateX(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-14px) translateX(8px) rotate(5deg);
-  }
-}
-
-@keyframes floatSlow4 {
-  0%, 100% {
-    transform: translateY(0px) translateX(0px) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-20px) translateX(-10px) rotate(-6deg);
-  }
-}
-
-@keyframes floatDrift {
-  0%, 100% {
-    transform: translateY(0px) translateX(0px);
-  }
-  33% {
-    transform: translateY(-12px) translateX(6px);
-  }
-  66% {
-    transform: translateY(-6px) translateX(-6px);
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
   }
 }
 
 /* Animation utility classes */
 .animate-fade-in {
-  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: fadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-page-transition {
@@ -165,54 +65,21 @@
 }
 
 .animate-hero-reveal {
-  animation: heroReveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-data-flow {
-  animation: dataFlow 5s linear infinite;
-}
-
-.animate-pulse-subtle {
-  animation: pulseSubtle 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-.animate-pulse-glow {
-  animation: pulseGlow 4s ease-in-out infinite;
-}
-
-/* Icon floating utility classes with staggered timings */
-.animate-float-1 {
-  animation: floatSlow1 7s ease-in-out infinite;
-}
-
-.animate-float-2 {
-  animation: floatSlow2 9s ease-in-out infinite 1s;
-}
-
-.animate-float-3 {
-  animation: floatSlow3 11s ease-in-out infinite 2s;
-}
-
-.animate-float-4 {
-  animation: floatSlow4 13s ease-in-out infinite 0.5s;
-}
-
-.animate-float-drift {
-  animation: floatDrift 15s ease-in-out infinite 1.5s;
+  animation: heroReveal 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* ========================================================================= */
-/* PREMIUM INTERACTIVE CARD & CHIP STYLES                                    */
+/* PREMIUM INTERACTIVE STUDIO CARD & BADGE STYLES                            */
 /* ========================================================================= */
 .card-interactive {
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.25s ease;
   will-change: transform, box-shadow;
 }
 
 .card-interactive:hover {
-  transform: translate3d(0, -6px, 0);
+  transform: translate3d(0, -4px, 0);
 }
 
 .tech-chip-interactive {
@@ -223,48 +90,12 @@
 }
 
 .tech-chip-interactive:hover {
-  transform: translate3d(0, -2px, 0);
-  box-shadow: 0 4px 12px -2px rgba(99, 102, 241, 0.15);
+  transform: translate3d(0, -1px, 0);
 }
 
-/* Respect user's reduced motion preferences */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto !important;
-  }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-
-  .animate-float-1,
-  .animate-float-2,
-  .animate-float-3,
-  .animate-float-4,
-  .animate-float-drift,
-  .animate-pulse-subtle,
-  .animate-pulse-glow,
-  .animate-data-flow,
-  .animate-fade-in,
-  .animate-page-transition,
-  .animate-hero-reveal {
-    animation: none !important;
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  .card-interactive:hover,
-  .tech-chip-interactive:hover {
-    transform: none !important;
-  }
-}
-
-/* GJ Nexora Branded Accents */
+/* ========================================================================= */
+/* ACCENTS & BRAND TOKENS                                                    */
+/* ========================================================================= */
 .brand-gradient-text {
   background: linear-gradient(135deg, #4F46E5 0%, #2563EB 50%, #7C3AED 100%);
   -webkit-background-clip: text;
@@ -279,11 +110,7 @@
   background: linear-gradient(135deg, #4338CA 0%, #1D4ED8 50%, #6D28D9 100%);
 }
 
-.brand-glow {
-  box-shadow: 0 0 40px -10px rgba(99, 102, 241, 0.2);
-}
-
-/* Custom light scrollbar */
+/* Custom restrained scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -297,4 +124,35 @@
 }
 ::-webkit-scrollbar-thumb:hover {
   background: #94A3B8;
+}
+
+/* ========================================================================= */
+/* REDUCED MOTION PREFERENCES                                                */
+/* ========================================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .animate-fade-in,
+  .animate-page-transition,
+  .animate-hero-reveal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .card-interactive:hover,
+  .tech-chip-interactive:hover {
+    transform: none !important;
+  }
 }
